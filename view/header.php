@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <!-- fullCalendar -->
+  <link rel="stylesheet" href="plugins/fullcalendar/main.css">
   
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

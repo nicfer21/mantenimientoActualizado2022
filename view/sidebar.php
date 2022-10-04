@@ -151,8 +151,25 @@
                 }
 
                 ?>
-
                 
+                <li class="nav-item">
+                    <a href="calendario" class="nav-link">
+                        <i class="nav-icon fa fa-calendar-check"></i>
+                        <p>
+                            Calendario
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="procedimiento" class="nav-link">
+                        <i class="nav-icon fa fa-calendar-check"></i>
+                        <p>
+                            Procedimientos
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

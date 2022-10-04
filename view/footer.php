@@ -14,6 +14,9 @@
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- fullCalendar 2.2.5 -->
+<script src="plugins/fullcalendar/main.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </body>
