@@ -68,7 +68,14 @@
                 }
 
                 ?>
-
+                <li class="nav-item">
+                    <a href="calendario" class="nav-link">
+                        <i class="nav-icon fa fa-calendar-check"></i>
+                        <p>
+                            Calendario
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item">
 
                     <a href="#" class="nav-link">
@@ -146,14 +153,7 @@
 
                 ?>
 
-                <li class="nav-item">
-                    <a href="calendario" class="nav-link">
-                        <i class="nav-icon fa fa-calendar-check"></i>
-                        <p>
-                            Calendario
-                        </p>
-                    </a>
-                </li>
+
 
                 <li class="nav-item">
 
