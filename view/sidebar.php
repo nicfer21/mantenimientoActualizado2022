@@ -40,7 +40,7 @@
 
                 <li class="nav-item">
                     <a id="link_empresa" href="inicio" class="nav-link">
-                        <i class="nav-icon fas fa-window-maximize"></i>
+                        <i class="nav-icon fas fa-industry"></i>
                         <p>
                             Inicio
                         </p>
@@ -81,7 +81,7 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="fichatecnica" class="nav-link">
                                 <i class="fas  fa-cog nav-icon"></i>
                                 <p>Fichas tecnicas</p>
                             </a>
@@ -95,18 +95,12 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="matriz" class="nav-link">
                                 <i class="fas fa-cog nav-icon"></i>
-                                <p>Matriz de diagnostico I</p>
+                                <p>Matrices</p>
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-cog nav-icon"></i>
-                                <p>Matriz de diagnostico II</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
 
@@ -151,7 +145,7 @@
                 }
 
                 ?>
-                
+
                 <li class="nav-item">
                     <a href="calendario" class="nav-link">
                         <i class="nav-icon fa fa-calendar-check"></i>
@@ -162,12 +156,31 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="procedimiento" class="nav-link">
-                        <i class="nav-icon fa fa-calendar-check"></i>
+
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-folder-open"></i>
                         <p>
                             Procedimientos
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="crearprocedimiento" class="nav-link">
+                                <i class="fas  fa-window-maximize nav-icon"></i>
+                                <p>Crear procedimiento</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="listaprocedimientos" class="nav-link">
+                                <i class="fas fa-window-maximize nav-icon"></i>
+                                <p>Lista de procedimiento</p>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
 
             </ul>

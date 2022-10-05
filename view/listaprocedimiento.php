@@ -17,31 +17,6 @@
           <!-- Default box -->
           <div class="card">
               <div class="card-header">
-                  <h3 class="card-title">Creacion de Procedimientos</h3>
-
-                  <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                          <i class="fas fa-minus"></i>
-                      </button>
-                  </div>
-
-              </div>
-              <div class="card-body">
-                  <div class="row">
-                      
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-
-                  </div>
-                  <!-- /.card-footer-->
-              </div>
-              <!-- /.card -->
-          </div>
-
-          <!-- Default box -->
-          <div class="card">
-              <div class="card-header">
                   <h3 class="card-title">Tabla de procedimientos</h3>
 
                   <div class="card-tools">

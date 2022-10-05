@@ -29,7 +29,10 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "inventario" ||
                         $_GET['view'] == "compras" ||
                         $_GET['view'] == "calendario" ||
-                        $_GET['view'] == "procedimiento" ||
+                        $_GET['view'] == "crearprocedimiento" ||
+                        $_GET['view'] == "listaprocedimiento" ||
+                        $_GET['view'] == "fichatecnica" ||
+                        $_GET['view'] == "matriz" ||
                         $_GET['view'] == "partes-subpartes"
                     ) {
                         require "view/" . $_GET['view'] . ".php";
@@ -46,7 +49,10 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "inventario" ||
                         $_GET['view'] == "compras" ||
                         $_GET['view'] == "calendario" ||
-                        $_GET['view'] == "procedimiento" ||
+                        $_GET['view'] == "crearprocedimiento" ||
+                        $_GET['view'] == "listaprocedimiento" ||
+                        $_GET['view'] == "fichatecnica" ||
+                        $_GET['view'] == "matriz" ||
                         $_GET['view'] == "partes-subpartes"
                     ) {
                         require "view/" . $_GET['view'] . ".php";
@@ -61,6 +67,7 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "inicio" ||
                         $_GET['view'] == "empresa" ||
                         $_GET['view'] == "calendario" ||
+                        $_GET['view'] == "fichatecnica" ||
                         $_GET['view'] == "partes-subpartes"
                     ) {
                         require "view/" . $_GET['view'] . ".php";
