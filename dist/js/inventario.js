@@ -15,7 +15,8 @@ $(document).ready(function () {
             { data: 4 },
             { data: 5 },
             { data: 6 },
-            { data: 7 }
+            { data: 7 },
+            { data: 8 }
         ],
         dom: 'Bfrtip',
         buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
@@ -31,21 +32,11 @@ $(document).ready(function () {
     var nombreInventario = $("#nombreInventario");
     var cantidadInventario = $("#cantidadInventario");
     var costoInventario = $("#costoInventario");
+    var unidadInventario = $("#unidadInventario");
     var fabricanteInventario = $("#fabricanteInventario");
     var proveedorInventario = $("#proveedorInventario");
     var categoriaInventario = $("#categoriaInventario");
     var tipoInventario = $("#tipoInventario");
-
-    var idActInventario = $("#idActInventario");
-    var nombreActInventario = $("#nombreActInventario");
-    var cantidadActInventario = $("#cantidadActInventario");
-    var costoActInventario = $("#costoActInventario");
-    var fabricanteActInventario = $("#fabricanteActInventario");
-    var proveedorActInventario = $("#proveedorActInventario");
-    var categoriaActInventario = $("#categoriaActInventario");
-    var tipoActInventario = $("#tipoActInventario");
-
-    var switchActualizar = $("#switchActualizar");
 
     btnCrearInventario.click(function (e) {
         limpiarModal();
@@ -105,6 +96,7 @@ $(document).ready(function () {
                     nombre: nombreInventario.val(),
                     costou: costoInventario.val(),
                     cantidad: cantidadInventario.val(),
+                    unidad: unidadInventario.val(),
                     tipo: tipoInventario.val(),
                     fabricante: fabricanteInventario.val(),
                     proveedor: proveedorInventario.val(),
@@ -123,27 +115,6 @@ $(document).ready(function () {
             });
 
         }
-    });
-
-    $('#tablaInventario tbody').on('click', 'tr', function () {
-
-        var data = tablaInventario.row(this).data();
-
-        if (switchActualizar.is(":checked")) {
-
-
-
-            idActInventario.val(data[0]);
-            nombreActInventario.val(data[1]);
-            costoActInventario.val(data[2]);
-            cantidadActInventario.val(data[3]);
-            $("#tipoActInventario option[value='" + data[4] + "']").attr("selected", true);
-
-            setTimeout(function () {
-                $("#modalActualizar").modal("show");
-            }, 1000);
-        }
-
     });
 
     function limpiarModal() {
@@ -168,6 +139,7 @@ $(document).ready(function () {
         })
 
     }
+
     function actualizar() {
         Swal.fire({
             icon: 'success',

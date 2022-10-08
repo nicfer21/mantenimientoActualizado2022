@@ -3,19 +3,21 @@
 include("coneccion.php");
 
 $query = "SELECT 
-                inventario.idinventario,
-                inventario.nombre,
-                inventario.costou,
-                inventario.cantidad,
-                tipo.nombre,
-                fabricante.nombre,
-                proveedor.nombre,
-                categoria.nombre
-                FROM 
-                (((inventario inner join tipo on inventario.idtipo = tipo.idtipo) 
-                inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
-                inner join proveedor on inventario.idproveedor = proveedor.idproveedor)
-                inner join categoria on inventario.idcategoria = categoria.idcategoria;";
+            inventario.idinventario,
+            inventario.nombre,
+            inventario.costou,
+            inventario.cantidad,
+            unidad.nombre,
+            tipo.nombre,
+            fabricante.nombre,
+            proveedor.nombre,
+            categoria.nombre
+            FROM 
+            ((((inventario inner join tipo on inventario.idtipo = tipo.idtipo) 
+            inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
+            inner join proveedor on inventario.idproveedor = proveedor.idproveedor)
+            inner join categoria on inventario.idcategoria = categoria.idcategoria)
+            inner join unidad on inventario.idunidad = unidad.idunidad;";
 
 $rs = mysqli_query($con, $query);
 
@@ -29,7 +31,7 @@ $data = array();
 
 foreach ($rows as $row) {
     array_push($data, [
-        $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7]
+        $row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
     ]);
 }
 

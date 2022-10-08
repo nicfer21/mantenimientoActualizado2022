@@ -12,10 +12,10 @@ if (isset($_POST['nombre'])) {
     $fabricante = $_POST['fabricante'];
     $proveedor = $_POST['proveedor'];
     $categoria = $_POST['categoria'];
+    $unidad = $_POST['unidad'];
 
-
-    $query = "INSERT INTO inventario (nombre,costou,cantidad,idtipo,idfabricante,idproveedor,idcategoria)
-    VALUES ('$nombre',$costou,$cantidad,$tipo,$fabricante,$proveedor,$categoria);";
+    $query = "INSERT INTO inventario (nombre,costou,cantidad,idtipo,idfabricante,idproveedor,idcategoria,idunidad)
+    VALUES ('$nombre',$costou,$cantidad,$tipo,$fabricante,$proveedor,$categoria,$unidad);";
 
     $rs = mysqli_query($con, $query);
 
