@@ -174,7 +174,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="listaprocedimientos" class="nav-link">
+                            <a href="listaprocedimiento" class="nav-link">
                                 <i class="fas fa-window-maximize nav-icon"></i>
                                 <p>Lista de procedimiento</p>
                             </a>

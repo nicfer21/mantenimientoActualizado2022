@@ -14,7 +14,7 @@ $(document).ready(function () {
   var trabajador = $("#trabajador");
 
   var btnGuardar = $("#btnGuardar");
-  
+
 
   var dniT = $("#dniT");
   var nombreT = $("#nombreT");
@@ -203,11 +203,141 @@ $(document).ready(function () {
 
   });
 
-
-
   $(btnGuardar).click(function (e) {
-    // $(formCrearProcedimiento).submit();
+
+    var k = 0;
+
+    if (nombre.val() == "") {
+      $(nombre).addClass("is-invalid");
+      $(nombre).removeClass("is-valid");
+    } else {
+      $(nombre).addClass("is-valid");
+      $(nombre).removeClass("is-invalid");
+      k++;
+    }
+
+    if (estrategia.val() == "o") {
+      $(estrategia).addClass("is-invalid");
+      $(estrategia).removeClass("is-valid");
+    } else {
+      $(estrategia).addClass("is-valid");
+      $(estrategia).removeClass("is-invalid");
+      k++;
+    }
+
+    if (lugar.val() == "o") {
+      $(lugar).addClass("is-invalid");
+      $(lugar).removeClass("is-valid");
+    } else {
+      $(lugar).addClass("is-valid");
+      $(lugar).removeClass("is-invalid");
+      k++;
+    }
+
+    if (carga.val() == "") {
+      $(carga).addClass("is-invalid");
+      $(carga).removeClass("is-valid");
+      $(carga).removeClass("is-warning");
+    } else {
+      if (!isNaN(carga.val())) {
+        $(carga).addClass("is-valid");
+        $(carga).removeClass("is-invalid");
+        $(carga).removeClass("is-warning");
+        k++;
+      } else {
+        $(carga).addClass("is-warning");
+        $(carga).removeClass("is-valid");
+        $(carga).removeClass("is-invalid");
+      }
+    }
+
+    if (lugar.val() == "o") {
+      $(lugar).addClass("is-invalid");
+      $(lugar).removeClass("is-valid");
+    } else {
+      $(lugar).addClass("is-valid");
+      $(lugar).removeClass("is-invalid");
+      k++;
+    }
+
+    if (instrucciones.val() == "") {
+      $(instrucciones).addClass("is-invalid");
+      $(instrucciones).removeClass("is-valid");
+    } else {
+      $(instrucciones).addClass("is-valid");
+      $(instrucciones).removeClass("is-invalid");
+      k++;
+    }
+
+    if (leynorma.val() == "") {
+      $(leynorma).addClass("is-invalid");
+      $(leynorma).removeClass("is-valid");
+    } else {
+      $(leynorma).addClass("is-valid");
+      $(leynorma).removeClass("is-invalid");
+      k++;
+    }
+
+    if (idmaq.val() == "o") {
+      $(idmaq).addClass("is-invalid");
+      $(idmaq).removeClass("is-valid");
+    } else {
+      $(idmaq).addClass("is-valid");
+      $(idmaq).removeClass("is-invalid");
+      k++;
+    }
+
+    if (idparte.val() == "o") {
+      $(idparte).addClass("is-invalid");
+      $(idparte).removeClass("is-valid");
+    } else {
+      $(idparte).addClass("is-valid");
+      $(idparte).removeClass("is-invalid");
+      k++;
+    }
+
+    if (idsubparte.val() == "o") {
+      $(idsubparte).addClass("is-invalid");
+      $(idsubparte).removeClass("is-valid");
+    } else {
+      $(idsubparte).addClass("is-valid");
+      $(idsubparte).removeClass("is-invalid");
+      k++;
+    }
+
+    if (trabajador.val() == "o") {
+      $(trabajador).addClass("is-invalid");
+      $(trabajador).removeClass("is-valid");
+    } else {
+      $(trabajador).addClass("is-valid");
+      $(trabajador).removeClass("is-invalid");
+      k++;
+    }
+
+    if (k == 11) {
+      $(formCrearProcedimiento).submit();
+    } else {
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Ocurrio un Error',
+        text: 'Verifica que todo este completo en donde se le indica y en orden',
+        timer: 2000
+      });
+
+    }
+
   });
+
+
+
+
+
+
+
+
+
+
 
   function limpiarModal() {
     $(usarBuscarElemento).val("");

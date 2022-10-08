@@ -43,3 +43,5 @@
       <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <script src="dist/js/listaProcedimiento.js"></script>
