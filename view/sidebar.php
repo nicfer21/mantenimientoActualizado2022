@@ -183,6 +183,34 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Orden de trabajo
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="crearOrden" class="nav-link">
+                                <i class="fas  fa-bookmark nav-icon"></i>
+                                <p>Crear orden</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="listaOrden" class="nav-link">
+                                <i class="fas fa-bookmark nav-icon"></i>
+                                <p>Lista de ordenes</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
