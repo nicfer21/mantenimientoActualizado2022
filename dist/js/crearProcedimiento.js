@@ -329,16 +329,6 @@ $(document).ready(function () {
 
   });
 
-
-
-
-
-
-
-
-
-
-
   function limpiarModal() {
     $(usarBuscarElemento).val("");
   }

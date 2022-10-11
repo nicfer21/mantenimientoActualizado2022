@@ -32,7 +32,7 @@
                           <iframe width="700" height="400" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=2EDA39EC46A50B0F%211769&authkey=%21ALPK_3hU2BqVR0M&em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&resen=false"></iframe>
                           <br>
                           <hr>
-                          <a class="btn btn-link" href="https://1drv.ms/x/s!Ag8LpUbsOdoujWkfK4Owp-5bvNjB?e=AVGmSH" target="_blank" rel="noopener noreferrer">Descargar excel del diagnostico inicial</a>
+                          <a class="btn btn-link" href="https://1drv.ms/x/s!Ag8LpUbsOdoujWkfK4Owp-5bvNjB?e=AVGmSH" target="_blank" rel="noopener noreferrer">Descargar excel del diagnostico inicial <i class="fa fa-download" aria-hidden="true"></i></a>
                           <br>
                       </div>
 
@@ -44,7 +44,7 @@
                           <iframe src="https://onedrive.live.com/embed?resid=2EDA39EC46A50B0F%211770&amp;authkey=%21ACPIut3u1MxbFwY&amp;em=2" width="700px" height="400px" frameborder="0">Esto es un documento de <a target="_blank" href="https://office.com">Microsoft Office</a> incrustado con tecnología de <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
                           <br>
                           <hr>
-                          <a class="btn btn-link" href="https://1drv.ms/w/s!Ag8LpUbsOdoujWprTUd-c1EY9tgT?e=cx8Ea6" target="_blank" rel="noopener noreferrer">Descargar word del diagnostico inicial</a>
+                          <a class="btn btn-link" href="https://1drv.ms/w/s!Ag8LpUbsOdoujWprTUd-c1EY9tgT?e=cx8Ea6" target="_blank" rel="noopener noreferrer">Descargar word del diagnostico inicial <i class="fa fa-download" aria-hidden="true"></i></a>
                       </div>
 
                   </div>

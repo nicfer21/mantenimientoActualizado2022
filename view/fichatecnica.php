@@ -74,7 +74,7 @@
                                                     <td class='jornada'>$row[4]</td>
                                                     <td>
                                                     <a class='btn btn-link' href='$row[6]' target='_blank' >
-                                                        Descargar
+                                                    <i class='fa fa-download' aria-hidden='true'></i>
                                                     </a>
                                                     </td>
                                                 </tr>

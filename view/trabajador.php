@@ -100,7 +100,7 @@
                         <td class='tarifa'>$row[5]</td>
                         <td>
                           <button class='btn btn-warning btnTrabajadorActualizar' data-toggle='modal' data-target='#modalActualizar'>
-                            Actualizar
+                          <i class='fa fa-tasks' aria-hidden='true'></i>
                           </button>
                         </td>
                     </tr>

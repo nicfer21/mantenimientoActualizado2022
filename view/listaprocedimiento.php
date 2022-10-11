@@ -100,7 +100,7 @@
                                                     <td class='nombre'>$row[1]</td>
                                                     <td>
                                                         <button class='btn btn-warning btnBuscarProc'>
-                                                            Buscar
+                                                            Buscar <i class='fa fa-search' aria-hidden='true'></i>
                                                         </button>
                                                     </td>
                                                     <td>$row[4]</td>
@@ -108,8 +108,8 @@
                                                     <td>$row[6]</td>
                                                     <td>$row[7]</td>
                                                     <td>$row[8]</td>
-                                                    <td><a href='$row[9]' class='btn btn-link' target='_blank'>Hoja de ruta</a></td>
-                                                    <td><a href='$row[10]' class='btn btn-link' target='_blank'>Ley</a></td>
+                                                    <td><a href='$row[9]' class='btn btn-link' target='_blank'>Hoja de ruta <i class='fa fa-download' aria-hidden='true'></i></a></td>
+                                                    <td><a href='$row[10]' class='btn btn-link' target='_blank'>Ley <i class='fa fa-download' aria-hidden='true'></i></a></td>
                                                 </tr>
                                                 ";
                                     }
