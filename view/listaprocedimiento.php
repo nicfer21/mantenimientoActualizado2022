@@ -100,7 +100,7 @@
                                                     <td class='nombre'>$row[1]</td>
                                                     <td>
                                                         <button class='btn btn-warning btnBuscarProc'>
-                                                            Buscar <i class='fa fa-search' aria-hidden='true'></i>
+                                                            Buscar <i class='fa fa-search' aria-hidden='true'P></i>
                                                         </button>
                                                     </td>
                                                     <td>$row[4]</td>

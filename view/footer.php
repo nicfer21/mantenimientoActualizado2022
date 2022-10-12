@@ -14,6 +14,10 @@
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+<!-- PrintArea 2.2.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.2/jQuery.print.js" integrity="sha512-BaXrDZSVGt+DvByw0xuYdsGJgzhIXNgES0E9B+Pgfe13XlZQvmiCkQ9GXpjVeLWEGLxqHzhPjNSBs4osiuNZyg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <!-- fullCalendar 2.2.5 -->
 <script src="plugins/fullcalendar/main.js"></script>
 

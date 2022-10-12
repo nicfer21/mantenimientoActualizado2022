@@ -153,7 +153,7 @@
 
                   <div class="col-lg-5 col-sm-12">
                     <div class="form-group">
-                      <label for="costoInventario">Ingrese el costo unitario o costo/hora :</label>
+                      <label for="costoInventario">Ingrese el costo/unidad :</label>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text fw-bold">
