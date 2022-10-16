@@ -57,6 +57,8 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "listaprocedimiento" ||
                         $_GET['view'] == "crearSolicitud" ||
                         $_GET['view'] == "listaSolicitud" ||
+                        $_GET['view'] == "crearOrden" ||
+                        $_GET['view'] == "listaOrden" ||
                         $_GET['view'] == "fichatecnica" ||
                         $_GET['view'] == "matriz" ||
                         $_GET['view'] == "partes-subpartes"
@@ -71,9 +73,20 @@ if (isset($_SESSION['estado'])) {
 
                     if (
                         $_GET['view'] == "inicio" ||
+                        $_GET['view'] == "trabajador" ||
                         $_GET['view'] == "empresa" ||
+                        $_GET['view'] == "categoria" ||
+                        $_GET['view'] == "inventario" ||
+                        $_GET['view'] == "compras" ||
                         $_GET['view'] == "calendario" ||
+                        $_GET['view'] == "crearprocedimiento" ||
+                        $_GET['view'] == "listaprocedimiento" ||
+                        $_GET['view'] == "crearSolicitud" ||
+                        $_GET['view'] == "listaSolicitud" ||
+                        $_GET['view'] == "crearOrden" ||
+                        $_GET['view'] == "listaOrden" ||
                         $_GET['view'] == "fichatecnica" ||
+                        $_GET['view'] == "matriz" ||
                         $_GET['view'] == "partes-subpartes"
                     ) {
                         require "view/" . $_GET['view'] . ".php";
