@@ -188,6 +188,34 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
+                            Solicitud de trabajo
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="crearSolicitud" class="nav-link">
+                                <i class="fas  fa-bookmark nav-icon"></i>
+                                <p>Crear solicitud</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="listaSolicitud" class="nav-link">
+                                <i class="fas fa-bookmark nav-icon"></i>
+                                <p>Lista de solicitudes</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
                             Orden de trabajo
                             <i class="right fas fa-angle-left"></i>
                         </p>

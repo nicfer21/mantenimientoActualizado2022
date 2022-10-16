@@ -31,6 +31,8 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "calendario" ||
                         $_GET['view'] == "crearprocedimiento" ||
                         $_GET['view'] == "listaprocedimiento" ||
+                        $_GET['view'] == "crearSolicitud" ||
+                        $_GET['view'] == "listaSolicitud" ||
                         $_GET['view'] == "crearOrden" ||
                         $_GET['view'] == "listaOrden" ||
                         $_GET['view'] == "fichatecnica" ||
@@ -53,6 +55,8 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "calendario" ||
                         $_GET['view'] == "crearprocedimiento" ||
                         $_GET['view'] == "listaprocedimiento" ||
+                        $_GET['view'] == "crearSolicitud" ||
+                        $_GET['view'] == "listaSolicitud" ||
                         $_GET['view'] == "fichatecnica" ||
                         $_GET['view'] == "matriz" ||
                         $_GET['view'] == "partes-subpartes"
