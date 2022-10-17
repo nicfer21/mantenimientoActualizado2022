@@ -58,11 +58,19 @@ if (isset($_POST['idSolicitud'])) {
 
             <div id="AREA" class="row m-1">
 
-                <div class="col-lg-12 col-sm-12">
+                <div class="col-lg-12 col-sm-12 text-center">
                     <h1>Solicitud de orden de trabajo Nro <<?php echo $id; ?>>
                     </h1>
                 </div>
 
+                <div class="col-lg-12 col-sm-12">
+                    <hr>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <h6>INFORMACION GENERALES : </h6>
+                    </div>
+                </div>
                 <div class="col-lg-12 col-sm-12">
                     <div class="form-group">
                         <label for="nombre">TITULO : </label>
@@ -71,17 +79,25 @@ if (isset($_POST['idSolicitud'])) {
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <label>FECHA : </label>
+                        <label>FECHA DE CREACION : </label>
                         <input type="text" readonly class="form-control form-control-border border-width-2" value="<?php echo $fecha; ?>">
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <label>HORA : </label>
+                        <label>HORA DE CREACION : </label>
                         <input type="text" readonly class="form-control form-control-border border-width-2" value="<?php echo $hora; ?>">
                     </div>
                 </div>
 
+                <div class="col-lg-12 col-sm-12">
+                    <hr>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <h6>RESPONSABLE : </h6>
+                    </div>
+                </div>
                 <div class="col-lg-2 col-sm-12">
                     <div class="form-group">
                         <label>DNI : </label>
@@ -101,6 +117,14 @@ if (isset($_POST['idSolicitud'])) {
                     </div>
                 </div>
 
+                <div class="col-lg-12 col-sm-12">
+                    <hr>
+                </div>
+                <div class="col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <h6>OBJETO : </h6>
+                    </div>
+                </div>
                 <div class="col-lg-2 col-sm-12">
                     <div class="form-group">
                         <label>ID : </label>
@@ -121,6 +145,9 @@ if (isset($_POST['idSolicitud'])) {
                 </div>
 
                 <div class="col-lg-12 col-sm-12">
+                    <hr>
+                </div>
+                <div class="col-lg-12 col-sm-12">
                     <div class="form-group">
                         <h6>DESCRIPCION : </h6>
                     </div>
@@ -130,7 +157,9 @@ if (isset($_POST['idSolicitud'])) {
                         <?php echo $texto; ?>
                     </div>
                 </div>
-
+                <div class="col-lg-12 col-sm-12">
+                    <hr>
+                </div>
             </div>
         </div>
 
