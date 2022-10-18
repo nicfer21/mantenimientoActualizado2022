@@ -3,7 +3,7 @@ include("coneccion.php");
 
 if (isset($_POST['nombre'])) {
 
-    $nombreProc = $_POST['nombre'];
+    $nombreProc = strtoupper($_POST['nombre']);
     $estrategia = $_POST['estrategia'];
     $lugar = $_POST['lugar'];
     $carga = $_POST['carga'];

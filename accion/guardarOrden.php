@@ -17,8 +17,6 @@ if (isset($_POST['idprocedimiento'])) {
 (idprocedimiento,inicio,final,idtrabajador,idprioridad,descripcion)
 VALUES ($procedimiento,'$fechaInicial','$fechaFinal','$trabajador',$prioridad,'$descripcion');";
 
-    echo $query;
-
     if ($rs = mysqli_query($con, $query)) {
         header('Location: ../crearOrden');
     } else {

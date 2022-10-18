@@ -4,8 +4,48 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-lg-12 col-sm-12">
                     <h1>CALENDARIO DE ACTIVIDADES DE MANTENIMIENTO</h1>
+                </div>
+                <div class="col-lg-5 col-sm-12">
+                    <h5>Leyenda de colores</h5>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>PRIORIDAD</th>
+                                <th>COLOR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                            <?php
+                            $query = "SELECT * FROM prioridad;";
+
+                            $rs = mysqli_query($con, $query);
+
+                            $rows = array();
+
+                            while ($row = mysqli_fetch_row($rs)) {
+                                $rows[] = $row;
+                            }
+
+                            foreach ($rows as $row) {
+                                echo "
+                                <tr>
+                                <td>
+                                    $row[1]
+                                </td>
+                                <td>
+                                    <input type='color' disabled class='form-control form-control-color' value='$row[2]' title='Color de la prioridad'>
+                                </td>
+                            </tr>
+                          ";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -133,7 +173,7 @@
 
                 // PARA MANDAR MENSAJE AL HACER CLICK
                 $("#ordenid").val(arg.event.id);
-                
+
                 $("#ordentitle").val(arg.event.title);
                 $("#ordenstart").val(arg.event.start);
                 $("#ordenend").val(arg.event.end);
