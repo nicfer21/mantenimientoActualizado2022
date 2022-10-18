@@ -36,6 +36,65 @@
 </div>
 <!-- /.content-wrapper -->
 
+
+<!-- Modal Mostrar -->
+<div class="modal fade" id="modalMostrar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">INFORMACION DE LA ACTIVIDAD</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="ordenid">Nro de Orden :</label>
+                            <input type="text" id="ordenid" readonly class="form-control form-control-border border-width-2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="ordentitle">Titulo del Procedimiento :</label>
+                            <input type="text" id="ordentitle" readonly class="form-control form-control-border border-width-2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="ordenstart">Inicio de la actividad :</label>
+                            <input type="text" id="ordenstart" readonly class="form-control form-control-border border-width-2">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="ordenend">Finalizacion de la actividad :</label>
+                            <input type="text" id="ordenend" readonly class="form-control form-control-border border-width-2">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 <script>
     $(document).ready(function() {
 
@@ -73,7 +132,13 @@
             eventClick: function(arg) {
 
                 // PARA MANDAR MENSAJE AL HACER CLICK
-                alert(arg.event.id);
+                $("#ordenid").val(arg.event.id);
+                
+                $("#ordentitle").val(arg.event.title);
+                $("#ordenstart").val(arg.event.start);
+                $("#ordenend").val(arg.event.end);
+
+                $("#modalMostrar").modal('show');
 
             },
             events:
@@ -110,16 +175,16 @@
                     $fechas = $fechas . "
                     {
                         id             :  $row[0],
-                        idprocedimiento: '$row[1]',
+                        idproc         : '$row[1]',
                         title          : '$row[2]',
                         start          : '$row[3]',
                         end            : '$row[4]',
-                        idtrabajador   : '$row[5]',
-                        nombretrab     : '$row[6]',
-                        prioridad      : '$row[7]',
+                        idtra          : '$row[5]',
+                        nombr          : '$row[6]',
+                        prior          : '$row[7]',
                         backgroundColor: '$row[8]',
                         borderColor    : '$row[8]',
-                        estado         : '$row[9]'
+                        estad          : '$row[9]'
                       },";
                 }
 
@@ -133,7 +198,7 @@
 
         calendar.render();
 
-        
+
 
     });
 </script>
