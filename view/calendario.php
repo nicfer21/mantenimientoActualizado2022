@@ -8,7 +8,7 @@
                     <h1>CALENDARIO DE ACTIVIDADES DE MANTENIMIENTO</h1>
                 </div>
                 <div class="col-lg-5 col-sm-12">
-                    <h5>Leyenda de colores</h5>
+                    <br>
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
