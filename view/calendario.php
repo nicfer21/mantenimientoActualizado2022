@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>CALENDARIO GENERAL</h1>
+                    <h1>CALENDARIO DE ACTIVIDADES DE MANTENIMIENTO</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -41,14 +41,10 @@
 
         var calendarEl = document.getElementById('calendar');
 
-        var y = 2022;
-        var m = 9;
-        var d = 23;
-
         var calendar = new FullCalendar.Calendar(calendarEl, {
             expandRows: true,
-            slotMinTime: '08:00',
-            slotMaxTime: '20:00',
+            slotMinTime: '06:00',
+            slotMaxTime: '23:00',
             themeSystem: 'bootstrap',
             headerToolbar: {
                 left: 'prev,next today',
@@ -75,123 +71,69 @@
                 calendar.unselect()
             },
             eventClick: function(arg) {
+
+                // PARA MANDAR MENSAJE AL HACER CLICK
                 alert(arg.event.id);
+
             },
             events:
 
                 <?php
 
-                echo $xd =  "[
-            {
-                title: 'All Day Event',
-                start: '2022-09-01',
-                id: 1
-            },
-            {
-                title: 'Long Event',
-                start: '2022-09-07',
-                end: '2022-09-10',
-                id: 2
-            },
-            {
-                groupId: 999,
-                id: 3,
-                title: 'Repeating Event',
-                start: '2022-09-09T16:00:00'
-            },
-            {
-                groupId: 999,
-                id: 4,
-                title: 'Repeating Event',
-                start: '2022-09-16T16:00:00'
-            },
-            {
-                title: 'Conference',
-                start: '2022-09-11',
-                end: '2022-09-13'
-            },
-            {
-                title: 'Meeting',
-                start: '2022-09-12T10:30:00',
-                end: '2022-09-12T12:30:00'
-            },
-            {
-                title: 'Lunch',
-                start: '2022-09-12T12:00:00'
-            },
-            {
-                title: 'Meeting',
-                start: '2022-09-12T14:30:00'
-            },
-            {
-                title: 'Happy Hour',
-                start: '2022-09-12T17:30:00'
-            },
-            {
-                title: 'Dinner',
-                start: '2022-09-12T20:00:00'
-            },
-            {
-                title: 'Birthday Party',
-                start: '2022-09-13T07:00:00'
-            },
-            {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2022-09-28'
-            },
-            {
-                title          : 'All Day Event',
-                start          : new Date(y, m, 1),
-                backgroundColor: '#f56954', //red
-                borderColor    : '#f56954', //red
-                allDay         : true
-              },
-              {
-                title          : 'Long Event',
-                start          : new Date(y, m, d - 5),
-                end            : new Date(y, m, d - 2),
-                backgroundColor: '#f39c12', //yellow
-                borderColor    : '#f39c12' //yellow
-              },
-              {
-                title          : 'Meeting',
-                start          : new Date(y, m, d, 10, 30),
-                allDay         : false,
-                backgroundColor: '#0073b7', //Blue
-                borderColor    : '#0073b7' //Blue
-              },
-              {
-                title          : 'Lunch',
-                start          : new Date(y, m, d, 12, 0),
-                end            : new Date(y, m, d, 14, 0),
-                allDay         : false,
-                backgroundColor: '#00c0ef', //Info (aqua)
-                borderColor    : '#00c0ef' //Info (aqua)
-              },
-              {
-                title          : 'Birthday Party',
-                start          : new Date(y, m, d + 1, 19, 0),
-                end            : new Date(y, m, d + 1, 22, 30),
-                allDay         : false,
-                backgroundColor: '#00a65a', //Success (green)
-                borderColor    : '#00a65a' //Success (green)
-              },
-              {
-                title          : 'Click for Google',
-                start          : new Date(y, m, 28),
-                end            : new Date(y, m, 29),
-                url            : 'https://www.google.com/',
-                backgroundColor: '#3c8dbc', //Primary (light-blue)
-                borderColor    : '#3c8dbc' //Primary (light-blue)
-              }
-        ]";
+                include("accion/coneccion.php");
 
+                $query = "SELECT 
+                ordentrabajo.idorden,
+                procedimiento.idprocedimiento,
+                procedimiento.nombre,
+                replace(ordentrabajo.inicio,' ','T'),
+                replace(ordentrabajo.final,' ','T'),
+                procedimiento.idtrabajador,
+                concat(m_trabajador.t_apelllido, ', ',m_trabajador.t_nombre),
+                prioridad.nombre,
+                prioridad.color,
+                if(ordentrabajo.estado = 1,'Abierto','Cerrado')
+                FROM 
+                ((ordentrabajo inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento)
+                inner join m_trabajador on m_trabajador.t_dni = procedimiento.idtrabajador)
+                inner join prioridad on ordentrabajo.idprioridad = prioridad.idprioridad;";
+
+                $rs = mysqli_query($con, $query);
+
+                $rows = array();
+
+                while ($row = mysqli_fetch_row($rs)) {
+                    $rows[] = $row;
+                }
+                $fechas = "[";
+                foreach ($rows as $row) {
+                    $fechas = $fechas . "
+                    {
+                        id             :  $row[0],
+                        idprocedimiento: '$row[1]',
+                        title          : '$row[2]',
+                        start          : '$row[3]',
+                        end            : '$row[4]',
+                        idtrabajador   : '$row[5]',
+                        nombretrab     : '$row[6]',
+                        prioridad      : '$row[7]',
+                        backgroundColor: '$row[8]',
+                        borderColor    : '$row[8]',
+                        estado         : '$row[9]'
+                      },";
+                }
+
+                $fechas = $fechas . "]";
+
+                echo $fechas;
 
                 ?>
 
         });
 
         calendar.render();
+
+        
+
     });
 </script>

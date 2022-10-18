@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="plugins/fullcalendar/main.css">
 
   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-  
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -31,7 +30,7 @@
   <script src="dist/js/bootstrap.bundle.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+  
+
 </head>

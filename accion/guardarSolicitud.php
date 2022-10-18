@@ -8,11 +8,12 @@ if (isset($_POST['id'])) {
     $maquina = $_POST['maquina'];
     $lugar = $_POST['lugar'];
     $descripcion = $_POST['descripcion'];
+    
 
     $query = "INSERT INTO sys.solicitud
-    (titulo,idtrabajador,idmaq,idlugar,texto)
+    (titulo,idtrabajador,idmaq,idlugar,texto,estado)
     VALUES
-    ('$titulo','$trabajador','$maquina',$lugar,'$descripcion');";
+    ('$titulo','$trabajador','$maquina',$lugar,'$descripcion',1);";
 
     $rs = mysqli_query($con, $query);
 

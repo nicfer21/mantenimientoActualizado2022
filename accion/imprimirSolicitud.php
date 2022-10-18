@@ -5,6 +5,15 @@ if (isset($_POST['idSolicitud'])) {
 
     $con = mysqli_connect("mantenimiento.cjedgm57ynt9.sa-east-1.rds.amazonaws.com", "admin", "mantenimiento", "sys");
 
+    $query0 = "UPDATE solicitud
+    SET
+    estado = 0
+    WHERE idsolicitud = $id;";
+
+    mysqli_query($con,$query0);
+
+
+    
     $query1 = "Set time_zone = '-05:00';";
 
     mysqli_query($con, $query1);
