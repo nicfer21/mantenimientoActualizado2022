@@ -14,34 +14,104 @@
       <!-- Main content -->
       <section class="content">
           <!-- Default box -->
+
           <div class="card">
               <div class="card-header">
-                  <h3 class="card-title">Primer avance</h3>
+                  <h3 class="card-title">ORDEN DE TRABAJO ABIERTAS</h3>
 
                   <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                           <i class="fas fa-minus"></i>
                       </button>
                   </div>
-
               </div>
               <div class="card-body">
                   <div class="row">
-                      <div class="col-lg-6 col-sm-12">
+                      <div class="col-12">
+                          <table id="tablaOrdenAbierta" class="table table-bordered table-hover">
+                              <thead>
 
+                              </thead>
+                              <tbody>
+
+                              </tbody>
+                              <tfoot>
+
+                              </tfoot>
+                          </table>
                       </div>
                   </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
 
-                  </div>
-                  <!-- /.card-footer-->
               </div>
               <!-- /.card -->
           </div>
+
+          <div class="card">
+              <div class="card-header">
+                  <h3 class="card-title">ORDEN DE TRABAJO EN PROCESO</h3>
+
+                  <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                          <i class="fas fa-minus"></i>
+                      </button>
+                  </div>
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-12">
+                          <table id="tablaOrdenAbierta" class="table table-bordered table-hover">
+                              <thead>
+
+                              </thead>
+                              <tbody>
+
+                              </tbody>
+                              <tfoot>
+
+                              </tfoot>
+                          </table>
+                      </div>
+                  </div>
+
+              </div>
+              <!-- /.card -->
+          </div>
+
+          <div class="card">
+              <div class="card-header">
+                  <h3 class="card-title">ORDEN DE TRABAJO CERRADAS</h3>
+
+                  <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                          <i class="fas fa-minus"></i>
+                      </button>
+                  </div>
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-12">
+                          <table id="tablaOrdenAbierta" class="table table-bordered table-hover">
+                              <thead>
+
+                              </thead>
+                              <tbody>
+
+                              </tbody>
+                              <tfoot>
+
+                              </tfoot>
+                          </table>
+                      </div>
+                  </div>
+
+              </div>
+              <!-- /.card -->
+          </div>
+
       </section>
       <!-- /.content -->
+
   </div>
   <!-- /.content-wrapper -->
 
-  //para imprimir con el areaPrint $.print("#areaImpresion");
+  <script src="dist/js/listaSolicitud.js"></script>
