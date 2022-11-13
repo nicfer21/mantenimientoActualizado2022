@@ -40,16 +40,16 @@
                                           Nombre
                                       </th>
                                       <th>
-                                          Requerimiento
+                                          ID Maquina
+                                      </th>
+                                      <th>
+                                          Maquina
                                       </th>
                                       <th>
                                           Subparte
                                       </th>
                                       <th>
                                           Estrategia
-                                      </th>
-                                      <th>
-                                          Duracion (min)
                                       </th>
                                       <th>
                                           Trabajador
@@ -72,18 +72,18 @@
                                     idprocedimiento,
                                     procedimiento.nombre,
                                     idmaquina,
-                                    idparte,
+                                    maquina.nombre,
                                     idsubparte,
                                     estrategia.nombre,
-                                    cargalab,
                                     concat(t_apelllido, ', ',t_nombre),
                                     lugar.nombre,
                                     instruccion,
                                     ley
                                     FROM 
-                                    ((procedimiento inner join estrategia on procedimiento.idestrategia = estrategia.idestrategia)
+                                    (((procedimiento inner join estrategia on procedimiento.idestrategia = estrategia.idestrategia)
                                     inner join lugar on procedimiento.idlugar = lugar.idlugar)
-                                    inner join m_trabajador on m_trabajador.t_dni = procedimiento.idtrabajador;";
+                                    inner join m_trabajador on m_trabajador.t_dni = procedimiento.idtrabajador)
+                                    inner join maquina on maquina.id_maq = procedimiento.idmaquina;";
 
                                     $rs = mysqli_query($con, $query);
 
@@ -97,19 +97,15 @@
                                         echo "
                                                 <tr>
                                                     <td class='id'>$row[0]</td>
-                                                    <td class='nombre'>$row[1]</td>
-                                                    <td>
-                                                        <button class='btn btn-warning btnBuscarProc'>
-                                                            Buscar <i class='fa fa-search' aria-hidden='true'P></i>
-                                                        </button>
-                                                    </td>
+                                                    <td>$row[1]</td>
+                                                    <td>$row[2]</td>
+                                                    <td>$row[3]</td>
                                                     <td>$row[4]</td>
                                                     <td>$row[5]</td>
                                                     <td>$row[6]</td>
                                                     <td>$row[7]</td>
-                                                    <td>$row[8]</td>
-                                                    <td><a href='$row[9]' class='btn btn-link' target='_blank'>Hoja de ruta <i class='fa fa-download' aria-hidden='true'></i></a></td>
-                                                    <td><a href='$row[10]' class='btn btn-link' target='_blank'>Ley <i class='fa fa-download' aria-hidden='true'></i></a></td>
+                                                    <td><a href='$row[8]' class='btn btn-link' target='_blank'>Hoja de ruta <i class='fa fa-download' aria-hidden='true'></i></a></td>
+                                                    <td><a href='$row[9]' class='btn btn-link' target='_blank'>Guia<i class='fa fa-download' aria-hidden='true'></i></a></td>
                                                 </tr>
                                                 ";
                                     }
@@ -124,16 +120,16 @@
                                           Nombre
                                       </th>
                                       <th>
-                                          Requerimiento
+                                          ID Maquina
+                                      </th>
+                                      <th>
+                                          Maquina
                                       </th>
                                       <th>
                                           Subparte
                                       </th>
                                       <th>
                                           Estrategia
-                                      </th>
-                                      <th>
-                                          Duracion (min)
                                       </th>
                                       <th>
                                           Trabajador
@@ -195,7 +191,7 @@
 
                       <div class="col-lg-12 col-sm-12">
                           <div class="form-group">
-                              <table class = "table table-bordered table-hover">
+                              <table class="table table-bordered table-hover">
                                   <thead>
                                       <tr>
                                           <th>ID</th>

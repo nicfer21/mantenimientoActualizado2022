@@ -25,9 +25,13 @@ $(document).ready(function () {
     });
 
     var modalCrear = $("#modalCrear");
+    var modalActualizar = $("#modalActualizar");
+    var modalEliminar = $("#modalEliminar");
 
     var btnTrabajadorCrear = $("#btnTrabajadorCrear");
     var btnCrearInventario = $("#btnCrearInventario");
+    var btnActualizar = $("#btnActualizar");
+    var btnEliminar = $("#btnEliminar");
 
     var nombreInventario = $("#nombreInventario");
     var cantidadInventario = $("#cantidadInventario");
@@ -37,6 +41,55 @@ $(document).ready(function () {
     var proveedorInventario = $("#proveedorInventario");
     var categoriaInventario = $("#categoriaInventario");
     var tipoInventario = $("#tipoInventario");
+
+    var idInventarioAct = $("#idInventarioAct");
+    var nombreInventarioAct = $("#nombreInventarioAct");
+    var cantidadInventarioAct = $("#cantidadInventarioAct");
+    var costoInventarioAct = $("#costoInventarioAct");
+    var unidadInventarioAct = $("#unidadInventarioAct");
+    var fabricanteInventarioAct = $("#fabricanteInventarioAct");
+    var proveedorInventarioAct = $("#proveedorInventarioAct");
+    var categoriaInventarioAct = $("#categoriaInventarioAct");
+    var tipoInventarioAct = $("#tipoInventarioAct");
+
+    var idInventarioEli = $("#idInventarioEli");
+    var nombreInventarioEli = $("#nombreInventarioEli");
+
+    $('#tablaInventario tbody').on('contextmenu', 'tr', function (e) {
+
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Configuraciones adicionales',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Actualizar',
+            denyButtonText: `Eliminar`,
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                $(idInventarioAct).val(data[0]);
+                $(nombreInventarioAct).val(data[1]);
+                $(costoInventarioAct).val(data[2]);
+                $(cantidadInventarioAct).val(data[3]);
+
+                $(modalActualizar).modal("show");
+
+            } else if (result.isDenied) {
+
+                $(idInventarioEli).val(data[0]);
+                $(nombreInventarioEli).val(data[1]);
+
+                $(modalEliminar).modal("show");
+
+            }
+        });
+
+        var data = tablaInventario.row(this).data();
+
+
+    });
 
     btnCrearInventario.click(function (e) {
         limpiarModal();
@@ -117,6 +170,138 @@ $(document).ready(function () {
         }
     });
 
+    $(btnActualizar).click(function (e) {
+        e.preventDefault();
+
+        var i = 0;
+
+        if (nombreInventarioAct.val() == "") {
+            $(nombreInventarioAct).addClass("is-invalid");
+            $(nombreInventarioAct).removeClass("is-valid");
+        } else {
+            $(nombreInventarioAct).addClass("is-valid");
+            $(nombreInventarioAct).removeClass("is-invalid");
+            i++;
+        }
+
+        if (costoInventarioAct.val() == "") {
+            $(costoInventarioAct).addClass("is-invalid");
+            $(costoInventarioAct).removeClass("is-valid");
+            $(costoInventarioAct).removeClass("is-warning");
+        } else {
+            if (!isNaN(costoInventarioAct.val())) {
+                $(costoInventarioAct).addClass("is-valid");
+                $(costoInventarioAct).removeClass("is-invalid");
+                $(costoInventarioAct).removeClass("is-warning");
+                i++;
+            } else {
+                $(costoInventarioAct).addClass("is-warning");
+                $(costoInventarioAct).removeClass("is-valid");
+                $(costoInventarioAct).removeClass("is-invalid");
+            }
+        }
+
+        if (cantidadInventarioAct.val() == "") {
+            $(cantidadInventarioAct).addClass("is-invalid");
+            $(cantidadInventarioAct).removeClass("is-valid");
+            $(cantidadInventarioAct).removeClass("is-warning");
+        } else {
+            if (!isNaN(cantidadInventarioAct.val())) {
+                $(cantidadInventarioAct).addClass("is-valid");
+                $(cantidadInventarioAct).removeClass("is-invalid");
+                $(cantidadInventarioAct).removeClass("is-warning");
+                i++;
+            } else {
+                $(cantidadInventarioAct).addClass("is-warning");
+                $(cantidadInventarioAct).removeClass("is-valid");
+                $(cantidadInventarioAct).removeClass("is-invalid");
+            }
+        }
+
+        if (i == 3) {
+
+            Swal.fire({
+                title: '¿Esta seguro de Actualizar?',
+                text: 'Si actualiza tendra efectos sobre otros datos',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Actualizar'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "post",
+                        url: "accion/actualizarInventario.php",
+                        data: {
+                            id: idInventarioAct.val(),
+                            nombre: nombreInventarioAct.val(),
+                            costou: costoInventarioAct.val(),
+                            cantidad: cantidadInventarioAct.val(),
+                            unidad: unidadInventarioAct.val(),
+                            tipo: tipoInventarioAct.val(),
+                            fabricante: fabricanteInventarioAct.val(),
+                            proveedor: proveedorInventarioAct.val(),
+                            categoria: categoriaInventarioAct.val()
+                        },
+                        success: function (response) {
+                            if (response == 1) {
+                                modalActualizar.modal('hide');
+                                actualizar();
+                                tablaInventario.ajax.reload();
+                            } else {
+                                tablaInventario.ajax.reload();
+                            }
+                        }
+                    });
+                } else {
+                    Swal.fire('No hubo cambios', '', 'info')
+                }
+            })
+
+        } else {
+            error();
+        }
+
+    });
+
+    $(btnEliminar).click(function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: '¿Esta seguro de eliminar?',
+            text: 'Si elimina tendra efectos sobre otros datos',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "accion/eliminarInventario.php",
+                    data: {
+                        id: $(idInventarioEli).val()
+                    },
+                    success: function (response) {
+                        if (response == 1) {
+
+                            eliminar();
+
+                            $(modalEliminar).modal("hide");
+                            tablaInventario.ajax.reload();
+                        } else {
+                            error();
+                            tablaInventario.ajax.reload();
+                        }
+                    }
+                });
+            } else {
+                Swal.fire('No hubo cambios', '', 'info')
+            }
+        })
+
+    });
+
     function limpiarModal() {
         nombreInventario.val("");
         cantidadInventario.val("");
@@ -135,19 +320,27 @@ $(document).ready(function () {
             icon: 'success',
             title: 'Se guardo con exito',
             showConfirmButton: false,
-            timer: 1000
+            timer: 2000
         })
 
     }
-
     function actualizar() {
         Swal.fire({
             icon: 'success',
             title: 'Se Actualizo con exito',
             showConfirmButton: false,
-            timer: 1000
+            timer: 2000
         })
     }
+    function eliminar() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Se Elimino exitosamente',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    }
+
     function error() {
         Swal.fire({
             icon: 'error',
