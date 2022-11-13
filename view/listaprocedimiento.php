@@ -96,7 +96,7 @@
                                     foreach ($rows as $row) {
                                         echo "
                                                 <tr>
-                                                    <td class='id'>$row[0]</td>
+                                                    <td>$row[0]</td>
                                                     <td>$row[1]</td>
                                                     <td>$row[2]</td>
                                                     <td>$row[3]</td>
@@ -158,12 +158,54 @@
   </div>
   <!-- /.content-wrapper -->
 
-
-  <div class="modal fade" id="modalBuscarReq">
+  <!-- modal imprimir-->
+  <div class="modal fade" id="modalImprimir">
       <div class="modal-dialog modal-lg">
           <div class="modal-content">
               <div class="modal-header">
-                  <h4 class="modal-title">Requerimientos del procedimiento</h4>
+                  <h4 class="modal-title">Imprimir procedimiento</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <form action='accion/imprimirProcedimiento.php' method='post' target='_blank'>
+                  <div class="modal-body">
+                      <div class="row">
+
+                          <div class="col-lg-3 col-sm-12">
+                              <div class="form-group">
+                                  <label for="idImprimir">ID Procedimiento :</label>
+                                  <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="idImprimir" id="idImprimir" autocomplete="off">
+                              </div>
+                          </div>
+                          <div class="col-lg-9 col-sm-12">
+                              <div class="form-group">
+                                  <label for="nombreImprimir">Titulo :</label>
+                                  <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="nombreImprimir" id="nombreImprimir" autocomplete="off">
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      <button type="submit" name="btnImprimir" class="btn btn-primary">Imprimir Procedimiento</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <!-- modal eliminar-->
+  <div class="modal fade" id="modalEliminar">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Eliminar procedimiento </h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -171,40 +213,16 @@
               <div class="modal-body">
                   <div class="row">
 
-                      <div class="col-lg-2 col-sm-12">
+                      <div class="col-lg-3 col-sm-12">
                           <div class="form-group">
-                              <label for="idBuscarReq">Id :</label>
-                              <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="idBuscarReq" id="idBuscarReq" autocomplete="off">
+                              <label for="idEliminar">ID Procedimiento :</label>
+                              <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="idEliminar" id="idEliminar" autocomplete="off">
                           </div>
                       </div>
-
-                      <div class="col-lg-10 col-sm-12">
+                      <div class="col-lg-9 col-sm-12">
                           <div class="form-group">
-                              <label for="nombreBuscarReq">Nombre :</label>
-                              <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="nombreBuscarReq" id="nombreBuscarReq" autocomplete="off">
-                          </div>
-                      </div>
-
-                      <br>
-                      <hr>
-                      <br>
-
-                      <div class="col-lg-12 col-sm-12">
-                          <div class="form-group">
-                              <table class="table table-bordered table-hover">
-                                  <thead>
-                                      <tr>
-                                          <th>ID</th>
-                                          <th>NOMBRE</th>
-                                          <th>CANTIDAD</th>
-                                          <th>UNIDAD</th>
-                                          <th>COSTO DE USO</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody id="dataReq">
-
-                                  </tbody>
-                              </table>
+                              <label for="nombreEliminar">Titulo :</label>
+                              <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="nombreEliminar" id="nombreEliminar" autocomplete="off">
                           </div>
                       </div>
 
@@ -212,6 +230,7 @@
               </div>
               <div class="modal-footer justify-content-between">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <button type="button" id="btnEliminar" name="btnEliminar" class="btn btn-danger">Eliminar Procedimiento</button>
               </div>
           </div>
           <!-- /.modal-content -->
@@ -219,5 +238,8 @@
       <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
+
+
+
 
   <script src="dist/js/listaProcedimiento.js"></script>

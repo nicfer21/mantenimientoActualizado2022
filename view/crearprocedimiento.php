@@ -88,8 +88,8 @@
                           <!-- Carga -->
                           <div class="col-lg-4 col-sm-12">
                               <div class="form-group">
-                                  <label>Duracion del trabajo en minutos : </label>
-                                  <input type="text" class="form-control form-control-border border-width-2" name="carga" id="carga" placeholder="Duracion de trabajo en minutos" autocomplete="off">
+                                  <label>Duracion estimada del trabajo en minutos : </label>
+                                  <input type="text" class="form-control form-control-border border-width-2" name="carga" id="carga" placeholder="Duracion estimada de trabajo en minutos" autocomplete="off">
                               </div>
                           </div>
 

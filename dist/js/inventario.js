@@ -1,29 +1,5 @@
 $(document).ready(function () {
 
-    var tablaInventario = $("#tablaInventario").DataTable({
-
-        "responsive": true,
-        "lengthChange": true,
-        "autoWidth": true,
-
-        ajax: 'accion/mostrarInventario.php',
-        columns: [
-            { data: 0 },
-            { data: 1 },
-            { data: 2 },
-            { data: 3 },
-            { data: 4 },
-            { data: 5 },
-            { data: 6 },
-            { data: 7 },
-            { data: 8 }
-        ],
-        dom: 'Bfrtip',
-        buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
-
-        select: true
-    });
-
     var modalCrear = $("#modalCrear");
     var modalActualizar = $("#modalActualizar");
     var modalEliminar = $("#modalEliminar");
@@ -55,9 +31,35 @@ $(document).ready(function () {
     var idInventarioEli = $("#idInventarioEli");
     var nombreInventarioEli = $("#nombreInventarioEli");
 
+    var tablaInventario = $("#tablaInventario").DataTable({
+
+        "responsive": true,
+        "lengthChange": true,
+        "autoWidth": true,
+
+        ajax: 'accion/mostrarInventario.php',
+        columns: [
+            { data: 0 },
+            { data: 1 },
+            { data: 2 },
+            { data: 3 },
+            { data: 4 },
+            { data: 5 },
+            { data: 6 },
+            { data: 7 },
+            { data: 8 }
+        ],
+        dom: 'Bfrtip',
+        buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+
+        select: true
+    });
+
     $('#tablaInventario tbody').on('contextmenu', 'tr', function (e) {
 
         e.preventDefault();
+
+        var data = tablaInventario.row(this).data();
 
         Swal.fire({
             title: 'Configuraciones adicionales',
@@ -86,9 +88,7 @@ $(document).ready(function () {
             }
         });
 
-        var data = tablaInventario.row(this).data();
-
-
+        
     });
 
     btnCrearInventario.click(function (e) {

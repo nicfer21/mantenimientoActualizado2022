@@ -173,8 +173,19 @@ $(document).ready(function () {
   });
 
   $(btnAgragarFila).click(function (e) {
-    $("#modalCrear").modal("show");
-    limpiarModal();
+
+    if ($(carga).val() == "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ocurrio un Error',
+        text: 'Tiene que seleccionar el tiempo estimado de trabajo',
+        timer: 2000
+      })
+    } else {
+      $("#modalCrear").modal("show");
+      limpiarModal();
+    }
+
   });
 
   $(btnEliminarFila).click(function (e) {
@@ -195,7 +206,12 @@ $(document).ready(function () {
     var tipo = $(tipoBuscarElemento).val();
     var cantidad = $(usarBuscarElemento).val();
 
-    var costoTotal = cantidad * $(costoBuscarElemento).val();
+    if (tipo == "USO X HORA") {
+      var costoTotal = cantidad * costo * ($(carga).val()/60) * 100;
+      costoTotal = Math.round(costoTotal)/100;
+    } else {
+      var costoTotal = cantidad * costo;
+    }
 
     agregarF(id, nombre, costo, categoria, tipo, cantidad, costoTotal);
 
