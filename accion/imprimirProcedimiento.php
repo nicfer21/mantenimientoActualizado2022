@@ -219,13 +219,13 @@ if (isset($_POST['idImprimir'])) {
                             <th>Costo unitario</th>
                             <th>Tipo</th>
                             <th>Unidad</th>
-                            <th>Costo Req</th>
+                            <th>Costo Requerimiento</th>
                         </thead>
                         <tbody>
 
                             <?php
 
-                            $costoT = 0;                               
+                            $costoT = 0;
 
                             $query = "SELECT 
                             categoria.nombre,
@@ -261,24 +261,59 @@ if (isset($_POST['idImprimir'])) {
                                 <td>$row[1]</td>
                                 <td>$row[2]</td>
                                 <td>$row[3]</td>
-                                <td>S/. $row[4]</td>
+                                <td>S/ $row[4]</td>
                                 <td>$row[5]</td>
                                 <td>$row[6]</td>
-                                <th>S/. $row[7]</th>
+                                <th>S/ $row[7]</th>
                             </tr>
   ";
                             }
 
-                            $costoT = $costoT +$costoM;
+                            ?>
+                            <tr>
+                                <th colspan="8">SUBTOTALES : </th>
+                            </tr>
+                            <?php
+
+                            $costoT = $costoT + $costoM;
+
+                            $categoria = array("MAQUINA O EQUIPO", "HERRAMIENTA", "REFACCION", "INSUMO", "EPPS");
+
+                            for ($k = 0; $k < 5; $k++) {
+
+                                $etapa = $k + 1;
+
+                                $query5 = "SELECT
+                                sum(requisito.costo)
+                                FROM requisito inner join inventario on requisito.idinventario = inventario.idinventario 
+                                where idprocedimiento = $id and inventario.idcategoria = $etapa;";
+
+                                $rs = mysqli_query($con, $query5);
+                                $row = mysqli_fetch_row($rs);
+
+                                if ($row[0] == "") {
+                                    $row = "-";
+                                } else {
+                                    $row = "S/ " . $row[0];
+                                }
+
+                                echo "
+                                <tr>
+                                    <th colspan='7'>$categoria[$k]</th>
+                                    <th>$row</th>
+                                </tr>
+                                ";
+                            }
+
 
                             ?>
 
                             <tr>
                                 <th colspan="7">MANO DE OBRA</th>
-                                <th><?php echo "S/. " . $costoM; ?></th>
+                                <th><?php echo "S/ " . $costoM; ?></th>
                             </tr>
                             <tr>
-                                <th colspan="8">COSTO TOTAL DE : S/. <?php echo $costoT; ?></th>
+                                <th colspan="8">COSTO TOTAL DE : S/ <?php echo $costoT; ?></th>
                             </tr>
                         </tbody>
                     </table>
@@ -296,7 +331,7 @@ if (isset($_POST['idImprimir'])) {
                     </div>
                 </div>
                 <div class="col-lg-8 offset-lg-2 col-sm-12">
-                    <p>El costo total del procedimiento es de <strong>S/. <?php echo $costoT; ?></strong> y con una duracion aproximada de <strong><?php echo  $carga; ?> minutos.</strong></p>
+                    <p>El costo total del procedimiento es de <strong>S/ <?php echo $costoT; ?></strong> y con una duracion aproximada de <strong><?php echo  $carga; ?> minutos.</strong></p>
                 </div>
                 <div class="col-lg-12 col-sm-12">
                     <hr>

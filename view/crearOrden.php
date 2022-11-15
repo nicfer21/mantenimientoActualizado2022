@@ -227,12 +227,12 @@
                                       <thead>
                                           <tr>
                                               <th>ID</th>
-                                              <th>NOMBRE</th>
-                                              <th>CANTIDAD</th>
+                                              <th>ELEMENTO</th>
                                               <th>CATEGORIA</th>
                                               <th>TIPO</th>
+                                              <th>CANTIDAD</th>
                                               <th>UNIDAD</th>
-                                              <th>COSTO DE USO</th>
+                                              <th>COSTO DE REQUERIMIENTO</th>
                                           </tr>
                                       </thead>
                                       <tbody id="dataReq">
