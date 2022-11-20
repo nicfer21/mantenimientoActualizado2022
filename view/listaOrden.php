@@ -30,44 +30,59 @@
                       <div class="col-12">
                           <table id="tablaOrdenAbierta" class="table table-bordered table-hover">
                               <thead>
-
+                                  <tr>
+                                      <th>ID Orden</th>
+                                      <th>Titulo</th>
+                                      <th>Duracion</th>
+                                      <th>Fecha inic</th>
+                                      <th>Hora inic</th>
+                                      <th>Fecha fin</th>
+                                      <th>Hora fin</th>
+                                      <th>Prioridad</th>
+                                  </tr>
                               </thead>
                               <tbody>
 
-                              </tbody>
-                              <tfoot>
+                                  <?php
 
-                              </tfoot>
-                          </table>
-                      </div>
-                  </div>
+                                    $query = "call sys.mostrar_orden_lista(1);";
 
-              </div>
-              <!-- /.card -->
-          </div>
+                                    $rs = mysqli_query($con, $query);
 
-          <div class="card">
-              <div class="card-header">
-                  <h3 class="card-title">ORDEN DE TRABAJO EN PROCESO</h3>
+                                    $rows = array();
 
-                  <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                          <i class="fas fa-minus"></i>
-                      </button>
-                  </div>
-              </div>
-              <div class="card-body">
-                  <div class="row">
-                      <div class="col-12">
-                          <table id="tablaOrdenAbierta" class="table table-bordered table-hover">
-                              <thead>
+                                    while ($row = mysqli_fetch_row($rs)) {
+                                        $rows[] = $row;
+                                    }
 
-                              </thead>
-                              <tbody>
+                                    foreach ($rows as $row) {
+                                        echo "
+                                    <tr>
+                                        <td>$row[0]</td>
+                                        <td>$row[1]</td>
+                                        <td>$row[2]</td>
+                                        <td>$row[3]</td>
+                                        <td>$row[4]</td>
+                                        <td>$row[5]</td>
+                                        <td>$row[6]</td>
+                                        <td>$row[7]</td>
+                                    </tr>
+                                    ";
+                                    }
+                                    ?>
 
                               </tbody>
                               <tfoot>
-
+                                  <tr>
+                                      <th>ID Orden</th>
+                                      <th>Titulo</th>
+                                      <th>Duracion</th>
+                                      <th>Fecha inic</th>
+                                      <th>Hora inic</th>
+                                      <th>Fecha fin</th>
+                                      <th>Hora fin</th>
+                                      <th>Prioridad</th>
+                                  </tr>
                               </tfoot>
                           </table>
                       </div>
@@ -90,15 +105,62 @@
               <div class="card-body">
                   <div class="row">
                       <div class="col-12">
-                          <table id="tablaOrdenAbierta" class="table table-bordered table-hover">
+                          <table id="tablaOrdenCerrada" class="table table-bordered table-hover">
                               <thead>
-
+                                  <tr>
+                                      <th>ID Orden</th>
+                                      <th>Titulo</th>
+                                      <th>Duracion</th>
+                                      <th>Fecha inic</th>
+                                      <th>Hora inic</th>
+                                      <th>Fecha fin</th>
+                                      <th>Hora fin</th>
+                                      <th>Prioridad</th>
+                                  </tr>
                               </thead>
                               <tbody>
+                                  <?php
 
+                                    $con = mysqli_connect("mantenimiento.cjedgm57ynt9.sa-east-1.rds.amazonaws.com", "admin", "mantenimiento", "sys");
+
+                                    $query = "call sys.mostrar_orden_lista(2);";
+
+                                    $rs = mysqli_query($con, $query);
+
+                                    $rows = array();
+
+                                    while ($row = mysqli_fetch_row($rs)) {
+                                        $rows[] = $row;
+                                    }
+
+                                    foreach ($rows as $row) {
+                                        echo "
+                                    <tr>
+                                        <td>$row[0]</td>
+                                        <td>$row[1]</td>
+                                        <td>$row[2]</td>
+                                        <td>$row[3]</td>
+                                        <td>$row[4]</td>
+                                        <td>$row[5]</td>
+                                        <td>$row[6]</td>
+                                        <td>$row[7]</td>
+                                    </tr>
+                                    ";
+                                    }
+
+                                    ?>
                               </tbody>
                               <tfoot>
-
+                                  <tr>
+                                      <th>ID Orden</th>
+                                      <th>Titulo</th>
+                                      <th>Duracion</th>
+                                      <th>Fecha inic</th>
+                                      <th>Hora inic</th>
+                                      <th>Fecha fin</th>
+                                      <th>Hora fin</th>
+                                      <th>Prioridad</th>
+                                  </tr>
                               </tfoot>
                           </table>
                       </div>
@@ -114,4 +176,85 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <script src="dist/js/listaSolicitud.js"></script>
+  <!-- modal imprimir-->
+  <div class="modal fade" id="modalImprimir">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Imprimir orden de trabajo</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <form action='accion/imprimirOrden.php' method='post' target='_blank'>
+                  <div class="modal-body">
+                      <div class="row">
+
+                          <div class="col-lg-3 col-sm-12">
+                              <div class="form-group">
+                                  <label for="idImprimir">ID Orden de trabajo :</label>
+                                  <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="idImprimir" id="idImprimir" autocomplete="off">
+                              </div>
+                          </div>
+                          <div class="col-lg-9 col-sm-12">
+                              <div class="form-group">
+                                  <label for="nombreImprimir">Titulo de orden de trabajo :</label>
+                                  <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="nombreImprimir" id="nombreImprimir" autocomplete="off">
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      <button type="submit" name="btnImprimir" class="btn btn-primary">Imprimir Orden de trabajo</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <!-- modal eliminar-->
+  <div class="modal fade" id="modalEliminar">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Eliminar orden de trabajo </h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+
+                      <div class="col-lg-3 col-sm-12">
+                          <div class="form-group">
+                              <label for="idEliminar">ID orden de trabajo :</label>
+                              <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="idEliminar" id="idEliminar" autocomplete="off">
+                          </div>
+                      </div>
+                      <div class="col-lg-9 col-sm-12">
+                          <div class="form-group">
+                              <label for="nombreEliminar">Titulo de orden de trabajo :</label>
+                              <input type="text" readonly class="form-control form-control-border border-width-2" readonly name="nombreEliminar" id="nombreEliminar" autocomplete="off">
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                  <button type="button" id="btnEliminar" name="btnEliminar" class="btn btn-danger">Eliminar Orden de trabajo</button>
+              </div>
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <script src="dist/js/listaOrden.js"></script>

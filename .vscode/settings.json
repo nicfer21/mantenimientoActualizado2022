@@ -1,0 +1,30 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "mantenimiento.cjedgm57ynt9.sa-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "AWS mantenimiento",
+            "database": "sys",
+            "username": "admin",
+            "password": "mantenimiento"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "prueba.cjedgm57ynt9.sa-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "AWS prueba",
+            "database": "sys",
+            "username": "admin",
+            "password": "12prueba34"
+        }
+    ]
+}

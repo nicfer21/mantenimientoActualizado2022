@@ -87,46 +87,49 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form action='accion/imprimirOrden.php' method='post' target='_blank'>
+                <div class="modal-body">
 
-            <div class="modal-body">
+                    <div class="row">
 
-                <div class="row">
-
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="form-group">
-                            <label for="ordenid">Nro de Orden :</label>
-                            <input type="text" id="ordenid" readonly class="form-control form-control-border border-width-2">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="idImprimir">Nro de Actividad :</label>
+                                <input type="text" id="idImprimir" name="idImprimir" readonly class="form-control form-control-border border-width-2">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="form-group">
-                            <label for="ordentitle">Titulo del Procedimiento :</label>
-                            <input type="text" id="ordentitle" readonly class="form-control form-control-border border-width-2">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="ordentitle">Titulo de la Actividad :</label>
+                                <input type="text" id="ordentitle" readonly class="form-control form-control-border border-width-2">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="form-group">
-                            <label for="ordenstart">Inicio de la actividad :</label>
-                            <input type="text" id="ordenstart" readonly class="form-control form-control-border border-width-2">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="ordenstart">Inicio de la Actividad :</label>
+                                <input type="text" id="ordenstart" readonly class="form-control form-control-border border-width-2">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-12 col-sm-12">
-                        <div class="form-group">
-                            <label for="ordenend">Finalizacion de la actividad :</label>
-                            <input type="text" id="ordenend" readonly class="form-control form-control-border border-width-2">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="ordenend">Finalizacion de la Actividad :</label>
+                                <input type="text" id="ordenend" readonly class="form-control form-control-border border-width-2">
+                            </div>
                         </div>
+
+
+
                     </div>
 
                 </div>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" name="btnOrden">Ir a orden de trabajo</button>
+                </div>
+            </form>
 
         </div>
         <!-- /.modal-content -->
@@ -172,8 +175,8 @@
             eventClick: function(arg) {
 
                 // PARA MANDAR MENSAJE AL HACER CLICK
-                $("#ordenid").val(arg.event.id);
 
+                $("#idImprimir").val(arg.event.id);
                 $("#ordentitle").val(arg.event.title);
                 $("#ordenstart").val(arg.event.start);
                 $("#ordenend").val(arg.event.end);
@@ -237,8 +240,6 @@
         });
 
         calendar.render();
-
-
 
     });
 </script>

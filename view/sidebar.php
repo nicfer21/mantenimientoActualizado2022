@@ -196,14 +196,14 @@
 
                         <li class="nav-item">
                             <a href="crearSolicitud" class="nav-link">
-                                <i class="fas  fa-bookmark nav-icon"></i>
+                                <i class="fas  fa-file nav-icon"></i>
                                 <p>Crear solicitud</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="listaSolicitud" class="nav-link">
-                                <i class="fas fa-bookmark nav-icon"></i>
+                                <i class="fas fa-file nav-icon"></i>
                                 <p>Lista de solicitudes</p>
                             </a>
                         </li>
@@ -214,7 +214,7 @@
                 <li class="nav-item">
 
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             Orden de trabajo
                             <i class="right fas fa-angle-left"></i>
