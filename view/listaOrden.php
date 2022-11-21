@@ -60,7 +60,7 @@
                                     <tr>
                                         <td>$row[0]</td>
                                         <td>$row[1]</td>
-                                        <td>$row[2]</td>
+                                        <td>$row[2] min</td>
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
@@ -138,7 +138,7 @@
                                     <tr>
                                         <td>$row[0]</td>
                                         <td>$row[1]</td>
-                                        <td>$row[2]</td>
+                                        <td>$row[2] min</td>
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>

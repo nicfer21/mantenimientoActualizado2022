@@ -239,6 +239,34 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-briefcase"></i>
+                        <p>
+                            Reporte de trabajo
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="crearReporteTrabajo" class="nav-link">
+                                <i class="fas  fa-braille  nav-icon"></i>
+                                <p>Crear reporte</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="listaReporteTrabajo" class="nav-link">
+                                <i class="fas fa-braille  nav-icon"></i>
+                                <p>Lista de reportes</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

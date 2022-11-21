@@ -43,3 +43,11 @@ DELIMITER //
 CALL mostrar_orden_estado(2);
 DELIMITER
 CALL mostrar_orden_lista(2);
+
+DELIMITER //
+
+
+
+DELIMITER //
+
+show CREATE table ordentrabajo;

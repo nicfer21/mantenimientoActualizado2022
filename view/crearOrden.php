@@ -252,7 +252,7 @@
 
               </div>
 
-              <!-- Buscar procedimiento -->
+              <!-- Hora y fecha del procedimiento -->
               <div class="card">
                   <div class="card-header">
                       <h3 class="card-title">Fecha de orden de trabajo</h3>

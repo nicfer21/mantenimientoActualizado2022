@@ -33,6 +33,8 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "listaprocedimiento" ||
                         $_GET['view'] == "crearSolicitud" ||
                         $_GET['view'] == "listaSolicitud" ||
+                        $_GET['view'] == "crearReporteTrabajo" ||
+                        $_GET['view'] == "listaReporteTrabajo" ||
                         $_GET['view'] == "crearOrden" ||
                         $_GET['view'] == "listaOrden" ||
                         $_GET['view'] == "fichatecnica" ||
@@ -57,6 +59,8 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "listaprocedimiento" ||
                         $_GET['view'] == "crearSolicitud" ||
                         $_GET['view'] == "listaSolicitud" ||
+                        $_GET['view'] == "crearReporteTrabajo" ||
+                        $_GET['view'] == "listaReporteTrabajo" ||
                         $_GET['view'] == "crearOrden" ||
                         $_GET['view'] == "listaOrden" ||
                         $_GET['view'] == "fichatecnica" ||
@@ -83,6 +87,8 @@ if (isset($_SESSION['estado'])) {
                         $_GET['view'] == "listaprocedimiento" ||
                         $_GET['view'] == "crearSolicitud" ||
                         $_GET['view'] == "listaSolicitud" ||
+                        $_GET['view'] == "crearReporteTrabajo" ||
+                        $_GET['view'] == "listaReporteTrabajo" ||
                         $_GET['view'] == "crearOrden" ||
                         $_GET['view'] == "listaOrden" ||
                         $_GET['view'] == "fichatecnica" ||
