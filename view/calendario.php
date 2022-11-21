@@ -204,7 +204,7 @@
                 FROM 
                 ((ordentrabajo inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento)
                 inner join m_trabajador on m_trabajador.t_dni = procedimiento.idtrabajador)
-                inner join prioridad on ordentrabajo.idprioridad = prioridad.idprioridad;";
+                inner join prioridad on ordentrabajo.idprioridad = prioridad.idprioridad where ordentrabajo.estado = 1;";
 
                 $rs = mysqli_query($con, $query);
 

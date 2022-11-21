@@ -46,6 +46,8 @@ $(document).ready(function () {
     var tiempoTrabajo = $("#tiempoTrabajo");
     var descripcion = $("#descripcion").summernote();
 
+    var formGuardar = $("#formGuardar");
+
     $(".select2").select2();
 
     var fechaInicio = $('#fechaInicio').datetimepicker({
@@ -132,9 +134,9 @@ $(document).ready(function () {
 
                 if (longitud > 0) {
                     for (let index = 0; index < longitud; index++) {
-                        
-                        agregarF(data[index].id,data[index].nombre,data[index].costou,data[index].tipo,data[index].categoria,data[index].cantidad,data[index].costost);
-                        
+
+                        agregarF(data[index].id, data[index].nombre, data[index].costou, data[index].tipo, data[index].categoria, data[index].cantidad, data[index].costost);
+
                     }
                 }
 
@@ -267,11 +269,73 @@ $(document).ready(function () {
     $(btnGuardar).click(function (e) {
         e.preventDefault();
 
-        if ($(descripcion).val() == "") {
+        if ($(dataid).val() == "") {
+            error("Falta seleccionar la orden de trabajo");
+        } else if ($(datainicio).val() == "" || $(datafinal).val == "") {
+            error("Falta rellenar la fecha y hora del trabajo");
+        } else if ($(tiempoTrabajo).val() == "") {
+            error("Falta calcular el tiempo real de trabajo");
+        } else if ($(descripcion).val() == "") {
             error("No dejar vacio las obaservaciones");
+        } else {
+            comprobarC();
+        }
+    });
+
+    function comprobarC() {
+        var idValues = document.getElementsByName('idReq[]');
+
+        if (idValues.length != 0) {
+
+            var idVal = $('input[type=text][name="idReq[]"]').serialize();
+            var nombreVal = $('input[type=text][name="nombreReq[]"]').serialize();
+            var cantidadVal = $('input[type=text][name="cantidadReq[]"]').serialize();
+
+            $.ajax({
+                type: "post",
+                url: "accion/compararReq.php",
+                data: {
+                    idV: idVal,
+                    nombreV: nombreVal,
+                    cantidadV: cantidadVal
+                },
+                success: function (response) {
+                    var data = JSON.parse(response);
+                    if (data[0].valido == 1) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Exceso de requerimiento de materiales sobre los existentes !!!',
+                            text: data[0].mensaje,
+                            timer:10000
+                        })
+
+                    } else {
+                        Swal.fire({
+                            title: '¿Quiere guardar el Reporte de Trabajo',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes',
+                            denyButtonText: 'No',
+                            customClass: {
+                                actions: 'my-actions',
+                                cancelButton: 'order-1 right-gap',
+                                confirmButton: 'order-2',
+                                denyButton: 'order-3',
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire('Se guardara en un momento!', '', 'success')
+                                $(formGuardar).submit();
+                            }
+                        })
+                    }
+
+                },
+            });
+
         }
 
-    });
+
+    }
 
     function agregarF(id, nombre, costo, categoria, tipo, cantidad, costototal) {
         var fila = "";
