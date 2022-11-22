@@ -6,10 +6,70 @@ if (isset($_POST['idImprimir'])) {
 
     $id = $_POST['idImprimir'];
 
+
+    $query0 = "SELECT maquina.id_maq,maquina.nombre,parte.id_parte,parte.parte,subparte.id_subparte,subparte.subparte,procedimiento.nombre,reptrabajo.observacion 
+    from reptrabajo
+    inner join ordentrabajo on reptrabajo.idordentrabajo = ordentrabajo.idorden
+    inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento
+    inner join maquina on procedimiento.idmaquina = maquina.id_maq
+    inner join parte on procedimiento.idparte = parte.id_parte
+    inner join subparte on procedimiento.idsubparte = subparte.id_subparte
+    where idreptrabajo = $id;";
+
+    $rs0 = mysqli_query($con, $query0);
+
+    $row = mysqli_fetch_row($rs0);
+
+    $idmaq = $row[0];
+    $maq = $row[1];
+    $idpar = $row[2];
+    $par = $row[3];
+    $idsub = $row[4];
+    $sub = $row[5];
+    $titulo = $row[6];
+    $descripcion = $row[7];
+
+    $query1 = "SELECT procedimiento.idtrabajador, concat(t_apelllido,', ',t_nombre),p_prof,t_tarifa,idreptrabajo,idorden,ordentrabajo.idprocedimiento from reptrabajo
+    inner join ordentrabajo on reptrabajo.idordentrabajo = ordentrabajo.idorden
+    inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento
+    inner join m_trabajador on m_trabajador.t_dni = procedimiento.idtrabajador
+    inner join m_profesion on m_profesion.p_id = m_trabajador.t_profesion
     
+    where idreptrabajo = $id;";
 
+    $rs1 = mysqli_query($con, $query1);
 
+    $row1 = mysqli_fetch_row($rs1);
 
+    $dniT = $row1[0];
+    $nombreT = $row1[1];
+    $cargoT = $row1[2];
+    $tarifaT = $row1[3];
+
+    $idRep = $row1[4];
+    $idOrden = $row1[5];
+    $idProc = $row1[6];
+
+    $query2 = "SELECT o.inicio,o.final,p.cargalab,prio.nombre from ordentrabajo as o
+    INNER JOIN procedimiento as p on p.idprocedimiento = o.idprocedimiento
+    inner JOIN prioridad as prio on prio.idprioridad = o.idprioridad
+    where o.idorden = $idOrden;";
+    $rs2 = mysqli_query($con, $query2);
+
+    $row2 = mysqli_fetch_row($rs2);
+
+    $inicioPron = $row2[0];
+    $finalPron = $row2[1];
+    $tiempoPron = $row2[2];
+    $prioridad = $row2[3];
+
+    $query3 = "SELECT inicio,final,tiempo from reptrabajo where idreptrabajo = $idRep;";
+    $rs3 = mysqli_query($con, $query3);
+    $row3 = mysqli_fetch_row($rs3);
+
+    $inicioReal = $row3[0];
+    $finalReal = $row3[1];
+    $tiempoReal = $row3[2];
 }
 ?>
 
@@ -75,6 +135,418 @@ if (isset($_POST['idImprimir'])) {
                 </div>
             </div>
 
+            <div class="col-lg-12 col-sm-12">
+                <hr>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                    <h6>ELEMENTO DEL REPORTE DE TRABAJO : </h6>
+                </div>
+            </div>
+            <div class="col-lg-8 offset-lg-2  col-sm-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">DESCRIPCION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">MAQUINA</th>
+                            <td><?php echo $idmaq; ?></td>
+                            <td><?php echo $maq; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PARTE</th>
+                            <td><?php echo $idpar; ?></td>
+                            <td><?php echo $par; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">SUBPARTE</th>
+                            <td><?php echo $idsub; ?></td>
+                            <td><?php echo $sub; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-12 col-sm-12">
+                <hr>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                    <h6>RESPONSABLE : </h6>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+                <div class="form-group">
+                    <label>DNI : </label>
+                    <input type="text" readonly class="form-control form-control-border border-width-2" value="<?php echo $dniT; ?>">
+                </div>
+            </div>
+            <div class="col-lg-5 col-sm-12">
+                <div class="form-group">
+                    <label>NOMBRE : </label>
+                    <input type="text" readonly class="form-control form-control-border border-width-2" value="<?php echo $nombreT; ?>">
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="form-group">
+                    <label>CARGO : </label>
+                    <input type="text" readonly class="form-control form-control-border border-width-2" value="<?php echo $cargoT; ?>">
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-sm-12">
+                <hr>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                    <h6>TRABAJO PROGRAMADO Y REALIZADO : </h6>
+                </div>
+            </div>
+            <div class="col-lg-10 offset-lg-1  col-sm-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" colspan="3">PRIORIDAD : <?php echo $prioridad; ?></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">PROGRAMADO</th>
+                            <th scope="col">REALIZADO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Horario Inicio</th>
+                            <td><?php echo $inicioPron; ?></td>
+                            <td><?php echo $inicioReal; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Horario Final</th>
+                            <td><?php echo $finalPron; ?></td>
+                            <td><?php echo $finalReal; ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Duracion</th>
+                            <td><?php echo $tiempoPron; ?> min</td>
+                            <td><?php echo $tiempoReal; ?> min</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="3"><?php
+                                                        $differenciaTiempo = 0;
+                                                        if ($tiempoPron > $tiempoReal) {
+                                                            $differenciaTiempo = $tiempoPron - $tiempoReal;
+                                                            echo "Tiempo muerto de : " . $differenciaTiempo . " min";
+                                                        } else if ($tiempoReal > $tiempoPron) {
+                                                            $differenciaTiempo =  $tiempoReal - $tiempoPron;
+                                                            echo "Tiempo extra de : " . $differenciaTiempo . " min";
+                                                        } else {
+                                                            echo "El tiempo programado fue el exacto";
+                                                        }
+
+                                                        ?></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                    <h6>REQUERIMIENTOS PROGRAMADOS : </h6>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <th>Categoria</th>
+                        <th>ID Inventario</th>
+                        <th>Elemento</th>
+                        <th>Cantidad</th>
+                        <th>Costo unitario</th>
+                        <th>Tipo</th>
+                        <th>Unidad</th>
+                        <th>Costo Requerimiento</th>
+                    </thead>
+                    <tbody>
+
+                        <?php
+
+                        $costoMPron = ($tiempoPron / 60) * $tarifaT * 100;
+                        $costoMPron = round($costoMPron) / 100;
+
+                        $costoTPron = 0;
+
+                        $query = "SELECT 
+                            categoria.nombre,
+                            inventario.idinventario,
+                            inventario.nombre,
+                            requisito.cantidad,
+                            inventario.costou,
+                            tipo.nombre,
+                            unidad.nombre,
+                            requisito.costo
+                            FROM 
+                            ((((requisito inner join inventario on requisito.idinventario = inventario.idinventario) inner join tipo on inventario.idtipo = tipo.idtipo) 
+                            inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
+                            inner join categoria on inventario.idcategoria = categoria.idcategoria)
+                            inner join unidad on inventario.idunidad = unidad.idunidad
+                            where idprocedimiento = $idProc order by categoria.idcategoria;";
+
+                        $rs = mysqli_query($con, $query);
+
+                        $rows = array();
+
+                        while ($row = mysqli_fetch_row($rs)) {
+                            $rows[] = $row;
+                        }
+
+                        foreach ($rows as $row) {
+
+                            $costoTPron = $costoTPron + $row[7];
+
+                            echo "
+                            <tr>
+                                <td>$row[0]</td>
+                                <td>$row[1]</td>
+                                <td>$row[2]</td>
+                                <td>$row[3]</td>
+                                <td>S/ $row[4]</td>
+                                <td>$row[5]</td>
+                                <td>$row[6]</td>
+                                <th>S/ $row[7]</th>
+                            </tr>
+  ";
+                        }
+
+                        ?>
+                        <tr>
+                            <th colspan="8">SUBTOTALES PROGRAMADOS : </th>
+                        </tr>
+                        <?php
+
+                        $costoTPron = $costoTPron + $costoMPron;
+
+                        $categoria = array("MAQUINAS O EQUIPOS PROGRAMADOS", "HERRAMIENTAS PROGRAMADOS", "REFACCIONES PROGRAMADOS", "INSUMOS PROGRAMADOS", "EPPS PROGRAMADOS");
+
+                        for ($k = 0; $k < 5; $k++) {
+
+                            $etapa = $k + 1;
+
+                            $query5 = "SELECT
+                                sum(requisito.costo)
+                                FROM requisito inner join inventario on requisito.idinventario = inventario.idinventario 
+                                where idprocedimiento = $id and inventario.idcategoria = $etapa;";
+
+                            $rs = mysqli_query($con, $query5);
+                            $row = mysqli_fetch_row($rs);
+
+                            if ($row[0] == "") {
+                                $row = "-";
+                            } else {
+                                $row = "S/ " . $row[0];
+                            }
+
+                            echo "
+                                <tr>
+                                    <th colspan='7'>$categoria[$k]</th>
+                                    <th>$row</th>
+                                </tr>
+                                ";
+                        }
+
+
+                        ?>
+
+                        <tr>
+                            <th colspan="7">MANO DE OBRA</th>
+                            <th><?php echo "S/ " . $costoMPron; ?></th>
+                        </tr>
+                        <tr>
+                            <th colspan="8">COSTO TOTAL PROGRAMADO DE : S/ <?php echo $costoTPron; ?></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                    <h6>REQUERIMIENTOS PROGRAMADOS : </h6>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <th>Categoria</th>
+                        <th>ID Inventario</th>
+                        <th>Elemento</th>
+                        <th>Cantidad</th>
+                        <th>Costo unitario</th>
+                        <th>Tipo</th>
+                        <th>Unidad</th>
+                        <th>Costo Requerimiento</th>
+                    </thead>
+                    <tbody>
+
+                        <?php
+
+                        $costoMReal = ($tiempoReal / 60) * $tarifaT * 100;
+                        $costoMReal = round($costoMReal) / 100;
+
+                        $costoTReal = 0;
+
+                        $query = "SELECT 
+                            categoria.nombre,
+                            inventario.idinventario,
+                            inventario.nombre,
+                            requisito.cantidad,
+                            inventario.costou,
+                            tipo.nombre,
+                            unidad.nombre,
+                            requisito.costo
+                            FROM 
+                            ((((requisito inner join inventario on requisito.idinventario = inventario.idinventario) inner join tipo on inventario.idtipo = tipo.idtipo) 
+                            inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
+                            inner join categoria on inventario.idcategoria = categoria.idcategoria)
+                            inner join unidad on inventario.idunidad = unidad.idunidad
+                            where idprocedimiento = $idProc order by categoria.idcategoria;";
+
+                        $rs = mysqli_query($con, $query);
+
+                        $rows = array();
+
+                        while ($row = mysqli_fetch_row($rs)) {
+                            $rows[] = $row;
+                        }
+
+                        foreach ($rows as $row) {
+
+                            $costoTReal = $costoTReal + $row[7];
+
+                            echo "
+                            <tr>
+                                <td>$row[0]</td>
+                                <td>$row[1]</td>
+                                <td>$row[2]</td>
+                                <td>$row[3]</td>
+                                <td>S/ $row[4]</td>
+                                <td>$row[5]</td>
+                                <td>$row[6]</td>
+                                <th>S/ $row[7]</th>
+                            </tr>
+  ";
+                        }
+
+                        ?>
+                        <tr>
+                            <th colspan="8">SUBTOTALES PROGRAMADOS : </th>
+                        </tr>
+                        <?php
+
+                        $costoTReal = $costoTReal + $costoMReal;
+
+                        $categoria = array("MAQUINAS O EQUIPOS PROGRAMADOS", "HERRAMIENTAS PROGRAMADOS", "REFACCIONES PROGRAMADOS", "INSUMOS PROGRAMADOS", "EPPS PROGRAMADOS");
+
+                        for ($k = 0; $k < 5; $k++) {
+
+                            $etapa = $k + 1;
+
+                            $query5 = "SELECT
+                                sum(requisito.costo)
+                                FROM requisito inner join inventario on requisito.idinventario = inventario.idinventario 
+                                where idprocedimiento = $id and inventario.idcategoria = $etapa;";
+
+                            $rs = mysqli_query($con, $query5);
+                            $row = mysqli_fetch_row($rs);
+
+                            if ($row[0] == "") {
+                                $row = "-";
+                            } else {
+                                $row = "S/ " . $row[0];
+                            }
+
+                            echo "
+                                <tr>
+                                    <th colspan='7'>$categoria[$k]</th>
+                                    <th>$row</th>
+                                </tr>
+                                ";
+                        }
+
+
+                        ?>
+
+                        <tr>
+                            <th colspan="7">MANO DE OBRA</th>
+                            <th><?php echo "S/ " . $costoMReal; ?></th>
+                        </tr>
+                        <tr>
+                            <th colspan="8">COSTO TOTAL PROGRAMADO DE : S/ <?php echo $costoTReal; ?></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,13 +555,21 @@ if (isset($_POST['idImprimir'])) {
                 <hr>
             </div>
             <div class="col-lg-12 col-sm-12">
+                <hr>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <hr>
+            </div>
+            <div class="col-lg-12 col-sm-12">
                 <div class="form-group">
-                    <h6>DESCRIPCION DE LA ORDEN : </h6>
+                    <h6>DESCRIPCION : </h6>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-12">
+            <div class="col-lg-12  col-sm-12">
                 <?php echo $descripcion; ?>
             </div>
+
+
 
         </div>
     </div>

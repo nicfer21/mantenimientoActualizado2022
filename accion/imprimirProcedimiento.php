@@ -318,6 +318,8 @@ if (isset($_POST['idImprimir'])) {
                         </tbody>
                     </table>
                 </div>
+
+                
                 <div class="col-lg-12 col-sm-12">
                     <hr>
                 </div>
