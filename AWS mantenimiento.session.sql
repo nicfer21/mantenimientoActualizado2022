@@ -77,3 +77,19 @@ SELECT maquina.id_maq,maquina.nombre,parte.id_parte,parte.parte,subparte.id_subp
     inner join parte on procedimiento.idparte = parte.id_parte
     inner join subparte on procedimiento.idsubparte = subparte.id_subparte
     where idreptrabajo = 1;
+
+    SELECT 
+                            categoria.nombre,
+                            inventario.idinventario,
+                            inventario.nombre,
+                            requisito.cantidad,
+                            inventario.costou,
+                            tipo.nombre,
+                            unidad.nombre,
+                            requisito.costo
+                            FROM 
+                            ((((requisito inner join inventario on requisito.idinventario = inventario.idinventario) inner join tipo on inventario.idtipo = tipo.idtipo) 
+                            inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
+                            inner join categoria on inventario.idcategoria = categoria.idcategoria)
+                            inner join unidad on inventario.idunidad = unidad.idunidad
+                            where idprocedimiento = 1 order by categoria.idcategoria;

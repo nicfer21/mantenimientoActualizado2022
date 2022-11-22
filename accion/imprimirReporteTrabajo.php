@@ -200,8 +200,24 @@ if (isset($_POST['idImprimir'])) {
             </div>
 
             <div class="col-lg-12 col-sm-12">
-                <hr>
+                <br>
             </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+
             <div class="col-lg-12 col-sm-12">
                 <div class="form-group">
                     <h6>TRABAJO PROGRAMADO Y REALIZADO : </h6>
@@ -238,20 +254,45 @@ if (isset($_POST['idImprimir'])) {
                         <tr>
                             <th scope="row" colspan="3"><?php
                                                         $differenciaTiempo = 0;
+                                                        $differenciaEstado = "";
                                                         if ($tiempoPron > $tiempoReal) {
                                                             $differenciaTiempo = $tiempoPron - $tiempoReal;
-                                                            echo "Tiempo muerto de : " . $differenciaTiempo . " min";
+
+                                                            $differenciaEstado = "Tiempo muerto de : " . $differenciaTiempo . " min";
+                                                            echo $differenciaEstado;
                                                         } else if ($tiempoReal > $tiempoPron) {
                                                             $differenciaTiempo =  $tiempoReal - $tiempoPron;
-                                                            echo "Tiempo extra de : " . $differenciaTiempo . " min";
+
+                                                            $differenciaEstado = "Tiempo extra de : " . $differenciaTiempo . " min";
+                                                            echo $differenciaEstado;
                                                         } else {
-                                                            echo "El tiempo programado fue el exacto";
+                                                            $differenciaEstado = "Tiempo programado fue el exacto";
+                                                            echo $differenciaEstado;
                                                         }
 
                                                         ?></th>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
             </div>
 
             <div class="col-lg-12 col-sm-12">
@@ -281,20 +322,20 @@ if (isset($_POST['idImprimir'])) {
                         $costoTPron = 0;
 
                         $query = "SELECT 
-                            categoria.nombre,
-                            inventario.idinventario,
-                            inventario.nombre,
-                            requisito.cantidad,
-                            inventario.costou,
-                            tipo.nombre,
-                            unidad.nombre,
-                            requisito.costo
-                            FROM 
-                            ((((requisito inner join inventario on requisito.idinventario = inventario.idinventario) inner join tipo on inventario.idtipo = tipo.idtipo) 
-                            inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
-                            inner join categoria on inventario.idcategoria = categoria.idcategoria)
-                            inner join unidad on inventario.idunidad = unidad.idunidad
-                            where idprocedimiento = $idProc order by categoria.idcategoria;";
+                        categoria.nombre,
+                        inventario.idinventario,
+                        inventario.nombre,
+                        requisito.cantidad,
+                        inventario.costou,
+                        tipo.nombre,
+                        unidad.nombre,
+                        requisito.costo
+                        FROM 
+                        ((((requisito inner join inventario on requisito.idinventario = inventario.idinventario) inner join tipo on inventario.idtipo = tipo.idtipo) 
+                        inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
+                        inner join categoria on inventario.idcategoria = categoria.idcategoria)
+                        inner join unidad on inventario.idunidad = unidad.idunidad
+                        where idprocedimiento = $idProc order by categoria.idcategoria;";
 
                         $rs = mysqli_query($con, $query);
 
@@ -339,7 +380,7 @@ if (isset($_POST['idImprimir'])) {
                             $query5 = "SELECT
                                 sum(requisito.costo)
                                 FROM requisito inner join inventario on requisito.idinventario = inventario.idinventario 
-                                where idprocedimiento = $id and inventario.idcategoria = $etapa;";
+                                where idprocedimiento = $idProc and inventario.idcategoria = $etapa;";
 
                             $rs = mysqli_query($con, $query5);
                             $row = mysqli_fetch_row($rs);
@@ -362,7 +403,7 @@ if (isset($_POST['idImprimir'])) {
                         ?>
 
                         <tr>
-                            <th colspan="7">MANO DE OBRA</th>
+                            <th colspan="7">MANO DE OBRA PROGRAMADA</th>
                             <th><?php echo "S/ " . $costoMPron; ?></th>
                         </tr>
                         <tr>
@@ -388,7 +429,24 @@ if (isset($_POST['idImprimir'])) {
 
 
 
-
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+            </div>
 
 
 
@@ -415,7 +473,7 @@ if (isset($_POST['idImprimir'])) {
 
             <div class="col-lg-12 col-sm-12">
                 <div class="form-group">
-                    <h6>REQUERIMIENTOS PROGRAMADOS : </h6>
+                    <h6>REQUERIMIENTOS REALES : </h6>
                 </div>
             </div>
             <div class="col-lg-12 col-sm-12">
@@ -440,20 +498,20 @@ if (isset($_POST['idImprimir'])) {
                         $costoTReal = 0;
 
                         $query = "SELECT 
-                            categoria.nombre,
-                            inventario.idinventario,
-                            inventario.nombre,
-                            requisito.cantidad,
-                            inventario.costou,
-                            tipo.nombre,
-                            unidad.nombre,
-                            requisito.costo
-                            FROM 
-                            ((((requisito inner join inventario on requisito.idinventario = inventario.idinventario) inner join tipo on inventario.idtipo = tipo.idtipo) 
-                            inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
-                            inner join categoria on inventario.idcategoria = categoria.idcategoria)
-                            inner join unidad on inventario.idunidad = unidad.idunidad
-                            where idprocedimiento = $idProc order by categoria.idcategoria;";
+                        categoria.nombre,
+                        inventario.idinventario,
+                        inventario.nombre,
+                        materialuso.cantidad,
+                        inventario.costou,
+                        tipo.nombre,
+                        unidad.nombre,
+                        materialuso.costo
+                        FROM 
+                        ((((materialuso inner join inventario on materialuso.idinventario = inventario.idinventario) inner join tipo on inventario.idtipo = tipo.idtipo) 
+                        inner join fabricante on inventario.idfabricante = fabricante.idfabricante)
+                        inner join categoria on inventario.idcategoria = categoria.idcategoria)
+                        inner join unidad on inventario.idunidad = unidad.idunidad
+                        where materialuso.idreptrabajo = $idRep order by categoria.idcategoria;";
 
                         $rs = mysqli_query($con, $query);
 
@@ -483,22 +541,22 @@ if (isset($_POST['idImprimir'])) {
 
                         ?>
                         <tr>
-                            <th colspan="8">SUBTOTALES PROGRAMADOS : </th>
+                            <th colspan="8">SUBTOTALES REALES : </th>
                         </tr>
                         <?php
 
                         $costoTReal = $costoTReal + $costoMReal;
 
-                        $categoria = array("MAQUINAS O EQUIPOS PROGRAMADOS", "HERRAMIENTAS PROGRAMADOS", "REFACCIONES PROGRAMADOS", "INSUMOS PROGRAMADOS", "EPPS PROGRAMADOS");
+                        $categoria = array("MAQUINAS O EQUIPOS REALES", "HERRAMIENTAS REALES", "REFACCIONES REALES", "INSUMOS REALES", "EPPS REALES");
 
                         for ($k = 0; $k < 5; $k++) {
 
                             $etapa = $k + 1;
 
                             $query5 = "SELECT
-                                sum(requisito.costo)
-                                FROM requisito inner join inventario on requisito.idinventario = inventario.idinventario 
-                                where idprocedimiento = $id and inventario.idcategoria = $etapa;";
+                            sum(materialuso.costo)
+                            FROM materialuso inner join inventario on materialuso.idinventario = inventario.idinventario 
+                            where materialuso.idreptrabajo = $idRep and inventario.idcategoria = $etapa;";
 
                             $rs = mysqli_query($con, $query5);
                             $row = mysqli_fetch_row($rs);
@@ -521,7 +579,7 @@ if (isset($_POST['idImprimir'])) {
                         ?>
 
                         <tr>
-                            <th colspan="7">MANO DE OBRA</th>
+                            <th colspan="7">MANO DE OBRA REAL </th>
                             <th><?php echo "S/ " . $costoMReal; ?></th>
                         </tr>
                         <tr>
@@ -538,7 +596,31 @@ if (isset($_POST['idImprimir'])) {
 
 
 
+            <div class="col-lg-12 col-sm-12">
+                <br>
+                <hr>
+                <br>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="form-group">
+                    <h6>RESUMEN : </h6>
+                </div>
+            </div>
+            <div class="col-lg-8 offset-lg-2 col-sm-12">
+                <p>El costo total real es de <strong>S/ <?php echo $costoTReal ?></strong>
+                    con una diferencia de <strong>S/ <?php echo ($costoTReal - $costoTPron)  ?></strong> con respecto al programado
+                    . Además se calculo con respecto en base al Tiempo que hay un <strong>
+                        <?php
 
+                        echo $differenciaEstado;
+
+                        ?></strong></p>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <br>
+                <hr>
+                <br>
+            </div>
 
 
 
