@@ -119,13 +119,13 @@
       </div>
       <div class="card-body">
         <div class="row mb-2">
-          <div class="col-sm-12 col-lg-6">
+          <div class="col-sm-12 col-lg-4">
             <p>
-               Se ha 
+               Se ha creado dos nuevas areas dentro de la empresa, estas son : <Strong>AREA DE MANTENIMIENTO</Strong> y <Strong>INVENTARIO DE MANTENIMIENTO</Strong>.
             </p>
           </div>
-          <div class="col-sm-12 col-lg-6">
-            <img src="dist/img/organigrama.svg" class="img-fluid" alt="Responsive image">
+          <div class="col-sm-12 col-lg-8">
+            <img src="dist/img/mapa.png" class="img-fluid" alt="Responsive image">
           </div>
 
         </div>
