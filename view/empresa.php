@@ -79,6 +79,62 @@
     </div>
     <!-- /.card -->
 
+
+    <!-- Organigrama -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title font-weight-bold">
+          Organigrama de la empresa
+        </h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+
+          <div class="col-sm-12 col-lg-8 offset-lg-2">
+            <img src="dist/img/organigrama.svg" class="img-fluid" alt="Responsive image">
+          </div>
+
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+    <!-- Organigrama -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title font-weight-bold">
+          Nueva distribucion de areas en la empresa
+        </h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-sm-12 col-lg-6">
+            <p>
+               Se ha 
+            </p>
+          </div>
+          <div class="col-sm-12 col-lg-6">
+            <img src="dist/img/organigrama.svg" class="img-fluid" alt="Responsive image">
+          </div>
+
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+
   </section>
   <!-- /.content -->
 </div>
