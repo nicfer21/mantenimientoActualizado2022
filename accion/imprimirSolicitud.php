@@ -1,9 +1,9 @@
 <?php
 
+include("coneccion.php");
+
 if (isset($_POST['idSolicitud'])) {
     $id = $_POST['idSolicitud'];
-
-    $con = mysqli_connect("mantenimiento.cjedgm57ynt9.sa-east-1.rds.amazonaws.com", "admin", "mantenimiento", "sys");
 
     $query0 = "UPDATE solicitud
     SET

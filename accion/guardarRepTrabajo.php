@@ -17,7 +17,7 @@ if (isset($_POST['dataid'])) {
 
     // cambiar la orden de trabajo a realizado
 
-    $query0 = "UPDATE sys.ordentrabajo
+    $query0 = "UPDATE ordentrabajo
         SET estado = 2
         WHERE idorden = $id;";
 
@@ -25,7 +25,7 @@ if (isset($_POST['dataid'])) {
 
     // guardar datos del reporte
 
-    $query1 = "INSERT INTO sys.reptrabajo
+    $query1 = "INSERT INTO reptrabajo
     (idordentrabajo,inicio,final,tiempo,observacion)
     VALUES
     ($id,'$inicio','$final',$tiempo,'$observacion');";
@@ -83,7 +83,7 @@ if (isset($_POST['dataid'])) {
 
                 echo " :: " . $costoST . " :: ";
 
-                $query4 = "INSERT INTO sys.materialuso
+                $query4 = "INSERT INTO materialuso
                 (idreptrabajo,idinventario,cantidad,costo)
                 VALUES
                 ($idRepTrabajo," . $idInv[0][$i] . "," . $cantidadInv[0][$i] . ",$costoST);";
@@ -96,7 +96,7 @@ if (isset($_POST['dataid'])) {
                     $diferencia = $cantidad - $cantidadInv[0][$i];
                     echo "  dif : " . $diferencia;
 
-                    $query5 = "UPDATE sys.inventario
+                    $query5 = "UPDATE inventario
                     SET
                     cantidad = $diferencia
                     WHERE idinventario = " . $idInv[0][$i] . ";";

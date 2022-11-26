@@ -16,7 +16,7 @@ if (isset($_POST['id'])) {
     $categoria = $_POST['categoria'];
     $unidad = $_POST['unidad'];
 
-    $query = "UPDATE sys.inventario SET
+    $query = "UPDATE inventario SET
     nombre = '$nombre',
     costou = $costou,
     cantidad = $cantidad,

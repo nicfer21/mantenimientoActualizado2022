@@ -1,12 +1,25 @@
 <?php
 
+include("coneccion.php");
+
 if (isset($_POST['idImprimir'])) {
 
     $id = $_POST['idImprimir'];
 
-    $con = mysqli_connect("mantenimiento.cjedgm57ynt9.sa-east-1.rds.amazonaws.com", "admin", "mantenimiento", "sys");
-
-    $query2 = "call mostrar_orden_estado($id);";
+    $query2 = "SELECT 
+    orden.idorden,
+    orden.idprocedimiento, 
+    proc.nombre,
+    proc.cargalab,
+    orden.inicio,
+    orden.final,
+    prioridad.nombre,
+    IF(orden.estado=1,'Abierto','Cerrado'),
+    orden.descripcion
+    FROM ordentrabajo as orden 
+    INNER JOIN procedimiento as proc on orden.idprocedimiento = proc.idprocedimiento 
+    INNER JOIN prioridad on orden.idprioridad = prioridad.idprioridad
+    WHERE orden.idorden = $id;";
 
     $rs = mysqli_query($con, $query2);
 

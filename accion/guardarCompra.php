@@ -20,7 +20,7 @@ if (isset($_POST['id'])) {
 
         $suma = $row[0] + $cantidad;
 
-        $querysuma = "UPDATE sys.inventario
+        $querysuma = "UPDATE inventario
         SET cantidad = $suma
         WHERE idinventario = $id;";
 

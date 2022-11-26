@@ -1,10 +1,10 @@
 <?php
 
+    include("coneccion.php");
+
 if (isset($_POST['idImprimir'])) {
 
     $id = $_POST['idImprimir'];
-
-    $con = mysqli_connect("mantenimiento.cjedgm57ynt9.sa-east-1.rds.amazonaws.com", "admin", "mantenimiento", "sys");
 
     $query2 = "SELECT 
                         procedimiento.idprocedimiento,

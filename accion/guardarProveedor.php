@@ -5,7 +5,7 @@ if (isset($_POST['nombre'])) {
     $nombre = $_POST['nombre'];
     $nombre = strtoupper($nombre);
     
-    $query = "INSERT INTO sys.proveedor(nombre) VALUES ('$nombre');";
+    $query = "INSERT INTO proveedor(nombre) VALUES ('$nombre');";
 
     $rs = mysqli_query($con,$query);
 

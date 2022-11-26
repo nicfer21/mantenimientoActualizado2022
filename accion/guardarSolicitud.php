@@ -10,7 +10,7 @@ if (isset($_POST['id'])) {
     $descripcion = $_POST['descripcion'];
     
 
-    $query = "INSERT INTO sys.solicitud
+    $query = "INSERT INTO solicitud
     (titulo,idtrabajador,idmaq,idlugar,texto,estado)
     VALUES
     ('$titulo','$trabajador','$maquina',$lugar,'$descripcion',1);";

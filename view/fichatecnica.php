@@ -54,7 +54,7 @@
                               <tbody id="table_trabajador_data">
                                   <?php
 
-                                    $query = "SELECT * FROM sys.maquina;";
+                                    $query = "SELECT * FROM maquina;";
 
                                     $rs = mysqli_query($con, $query);
 

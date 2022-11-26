@@ -27,7 +27,7 @@
                               <label for="cbxBuscar">Seleccione la maquina :</label>
                               <select name="cbxBuscar" id="cbxBuscar" class="custom-select rounded-0">
                                   <?php
-                                    $query = "SELECT id_maq, nombre from sys.maquina order by nombre;";
+                                    $query = "SELECT id_maq, nombre from maquina order by nombre;";
 
                                     $rs = mysqli_query($con, $query);
 

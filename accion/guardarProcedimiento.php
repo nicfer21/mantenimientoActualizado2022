@@ -16,7 +16,7 @@ if (isset($_POST['nombre'])) {
 
     $trabajador = $_POST['trabajador'];
 
-    $query = "INSERT INTO sys.procedimiento
+    $query = "INSERT INTO procedimiento
     (nombre,idmaquina,idparte,idsubparte,idestrategia,cargalab,idtrabajador,idlugar,instruccion,ley)
     VALUES ('$nombreProc','$idmaq','$idparte','$idsubparte',$estrategia,$carga,'$trabajador',$lugar,'$instrucciones','$leynorma');";
 
@@ -48,7 +48,7 @@ if (isset($_POST['nombre'])) {
             for ($i = 0; $i < count($arrayidReq); $i++) {
 
                 echo "<br>";
-                $query3 = "INSERT INTO sys.requisito
+                $query3 = "INSERT INTO requisito
                 (idprocedimiento,idinventario,cantidad,costo) VALUES ($valId,$arrayidReq[$i],$arraycantidadReq[$i],$arraycostoTotalReq[$i]);";
                 $rs3 = mysqli_query($con, $query3);
             }

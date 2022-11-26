@@ -45,7 +45,19 @@
 
                                   <?php
 
-                                    $query = "call sys.mostrar_orden_lista(1);";
+                                    $query = " SELECT 
+                                    orden.idorden,
+                                    proc.nombre,
+                                    proc.cargalab,
+                                    DATE(orden.inicio),
+                                    TIME(orden.inicio),
+                                    DATE(orden.final),
+                                    TIME(orden.final),
+                                    prioridad.nombre
+                                    FROM ordentrabajo as orden 
+                                    INNER JOIN procedimiento as proc on orden.idprocedimiento = proc.idprocedimiento 
+                                    INNER JOIN prioridad on orden.idprioridad = prioridad.idprioridad
+                                    WHERE orden.estado = 1;";
 
                                     $rs = mysqli_query($con, $query);
 
@@ -121,9 +133,19 @@
                               <tbody>
                                   <?php
 
-                                    $con = mysqli_connect("mantenimiento.cjedgm57ynt9.sa-east-1.rds.amazonaws.com", "admin", "mantenimiento", "sys");
-
-                                    $query = "call sys.mostrar_orden_lista(2);";
+                                    $query = " SELECT 
+                                    orden.idorden,
+                                    proc.nombre,
+                                    proc.cargalab,
+                                    DATE(orden.inicio),
+                                    TIME(orden.inicio),
+                                    DATE(orden.final),
+                                    TIME(orden.final),
+                                    prioridad.nombre
+                                    FROM ordentrabajo as orden 
+                                    INNER JOIN procedimiento as proc on orden.idprocedimiento = proc.idprocedimiento 
+                                    INNER JOIN prioridad on orden.idprioridad = prioridad.idprioridad
+                                    WHERE orden.estado = 2;";
 
                                     $rs = mysqli_query($con, $query);
 

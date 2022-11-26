@@ -5,7 +5,7 @@ include("coneccion.php");
 if (isset($_POST['maquina'])) {
     $maquina = $_POST['maquina'];
 
-    $query = "SELECT * from sys.parte where parte.id_maq = '$maquina';";
+    $query = "SELECT * from parte where parte.id_maq = '$maquina';";
 
     $rs = mysqli_query($con, $query);
 
