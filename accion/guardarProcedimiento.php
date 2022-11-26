@@ -20,10 +20,6 @@ if (isset($_POST['nombre'])) {
     (nombre,idmaquina,idparte,idsubparte,idestrategia,cargalab,idtrabajador,idlugar,instruccion,ley)
     VALUES ('$nombreProc','$idmaq','$idparte','$idsubparte',$estrategia,$carga,'$trabajador',$lugar,'$instrucciones','$leynorma');";
 
-    echo "<br>";
-    echo $query;
-    echo "<br>";
-
     $rs = mysqli_query($con, $query);
 
     if (isset($_POST['idReq'])) {
