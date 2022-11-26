@@ -46,8 +46,6 @@ if (isset($_POST['nombre'])) {
             $valId = $row[0][0];
 
             for ($i = 0; $i < count($arrayidReq); $i++) {
-
-                echo "<br>";
                 $query3 = "INSERT INTO requisito
                 (idprocedimiento,idinventario,cantidad,costo) VALUES ($valId,$arrayidReq[$i],$arraycantidadReq[$i],$arraycostoTotalReq[$i]);";
                 $rs3 = mysqli_query($con, $query3);
