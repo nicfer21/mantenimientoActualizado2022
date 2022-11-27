@@ -44,6 +44,14 @@
                           ";
                             }
                             ?>
+                            <tr>
+                                <td>
+                                    COMPLETADO
+                                </td>
+                                <td>
+                                    <input type='color' disabled class='form-control form-control-color' value='0A0A0A' title='Color de la prioridad'>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -199,12 +207,12 @@
                 procedimiento.idtrabajador,
                 concat(m_trabajador.t_apelllido, ', ',m_trabajador.t_nombre),
                 prioridad.nombre,
-                prioridad.color,
+                if(ordentrabajo.estado = 1,prioridad.color,'#0a0a0a'),
                 if(ordentrabajo.estado = 1,'Abierto','Cerrado')
                 FROM 
                 ((ordentrabajo inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento)
                 inner join m_trabajador on m_trabajador.t_dni = procedimiento.idtrabajador)
-                inner join prioridad on ordentrabajo.idprioridad = prioridad.idprioridad where ordentrabajo.estado = 1;";
+                inner join prioridad on ordentrabajo.idprioridad = prioridad.idprioridad;";
 
                 $rs = mysqli_query($con, $query);
 
