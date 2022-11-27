@@ -11,6 +11,11 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    <?php
+    $querySetZona = "Set time_zone='-5:00';";
+    mysqli_query($con, $querySetZona);
+    ?>
+
     <!-- Main content -->
     <section class="content">
 
@@ -27,7 +32,7 @@
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            
+
           </div>
         </div>
 
@@ -43,7 +48,7 @@
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            
+
           </div>
         </div>
 
@@ -59,7 +64,7 @@
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            
+
           </div>
         </div>
         <!-- ./col -->
@@ -75,7 +80,7 @@
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            
+
           </div>
         </div>
         <!-- ./col -->
@@ -88,18 +93,17 @@
         <div class="col-lg-6 col-sm-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Tipos de mantenimiento - Mes : <?php
-                date_default_timezone_set('America/Lima');
-                echo date('l jS \of F Y h:i:s A');
-                //echo date('D F Y');
-              
-              ?></h3>
+              <h3 class="card-title">Mantenimientos por maquina completados : <?php
+                                                                              date_default_timezone_set('America/Lima');
+                                                                              echo date('F Y');
+
+                                                                              ?></h3>
 
             </div>
             <!-- /.card-header -->
             <div class="card-body">
 
-              <canvas id="myChart">
+              <canvas id="graficoTiposMantenimiento">
 
               </canvas>
 
@@ -167,16 +171,54 @@
   <script>
     $(document).ready(function() {
 
-      const ctx = document.getElementById('myChart');
+      const graficoTiposMantenimiento = $("#graficoTiposMantenimiento");
 
-      new Chart(ctx, {
+      new Chart(graficoTiposMantenimiento, {
         type: 'bar',
         data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: [
+            <?php
+            $maquinas = array('IMP_01', 'BOR_01', 'BCO_01', 'COS_01', 'REC_01', 'REM_01');
+
+            for ($i = 0; $i < count($maquinas); $i++) {
+              echo "'$maquinas[$i]',";
+            }
+
+            ?>
+          ],
+
           datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1
+            label: 'Recuento',
+            data: [
+              <?php
+
+              for ($i = 0; $i < count($maquinas); $i++) {
+
+                $queryRecuentoMaquinas = "SELECT count(*)  from reptrabajo 
+                inner join ordentrabajo on reptrabajo.idordentrabajo = ordentrabajo.idorden
+                inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento 
+                where procedimiento.idmaquina = '$maquinas[$i]' and month(reptrabajo.inicio) = month(now());";
+
+                $rs = mysqli_query($con, $queryRecuentoMaquinas);
+
+                $row = mysqli_fetch_row($rs);
+
+                echo $row[0] . ",";
+
+              }
+
+              ?>
+            ],
+            borderWidth: 1,
+            backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(255, 159, 64, 1)',
+              'rgba(255, 205, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(153, 102, 255, 1)'
+            ],
+
           }]
         },
         options: {
@@ -187,6 +229,10 @@
           }
         }
       });
+
+      
+
+
 
     });
   </script>
