@@ -5,7 +5,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Inicio</h1>
+            <h1>INDICADORES MES ACTUAL : <?php
+                                          date_default_timezone_set('America/Lima');
+                                          echo date('F - Y');
+                                          ?> </h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -21,39 +24,101 @@
 
       <div class="row">
 
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>150</h3>
+              <h3>
+                <?php
+                $querySolicitudes = "SELECT count(idsolicitud) from solicitud where month(fecha) = month(now());";
+                $rs = mysqli_query($con, $querySolicitudes);
+                $row = mysqli_fetch_row($rs);
 
-              <p>New Orders</p>
+                echo $row[0];
+
+                ?>
+              </h3>
+
+              <p>Solicitudes de trabajo</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-document"></i>
             </div>
-
+            <a href="listaSolicitud" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
           <!-- small box -->
-          <div class="small-box bg-success">
+          <div class="small-box bg-info">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3>
+                <?php
+                $queryOrdenes = "SELECT count(idorden) FROM ordentrabajo  where month(inicio) = month(now());";
+                $rs = mysqli_query($con, $queryOrdenes);
+                $row = mysqli_fetch_row($rs);
 
-              <p>Bounce Rate</p>
+                echo $row[0];
+                $NumOrden = $row[0];
+
+                ?>
+              </h3>
+
+              <p>Ordendes de trabajo</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="ion ion-ios-paper"></i>
             </div>
-
+            <a href="listaOrden" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
+        <div class="col-lg-2 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>
+                <?php
+                $queryReporte = "SELECT count(idreptrabajo) FROM reptrabajo  where month(inicio) = month(now());";
+                $rs = mysqli_query($con, $queryReporte);
+                $row = mysqli_fetch_row($rs);
+                $NumReporte = $row[0];
+                echo $NumReporte;
+                ?>
+              </h3>
+
+              <p>Reportes de trabajo</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-briefcase"></i>
+            </div>
+            <a href="listaReporteTrabajo" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+
+        <div class="col-lg-2 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>
+                <?php
+                $Cumplimiento = ($NumReporte / $NumOrden) * 10000;
+                $Cumplimiento = round($Cumplimiento) / 100;
+                echo $Cumplimiento;
+                ?>
+                <sup style="font-size: 20px">%</sup>
+              </h3>
+              <p>Porcentaje de Cumplimiento</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-speedometer"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+
+        <div class="col-lg-2 col-6">
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
@@ -69,7 +134,7 @@
         </div>
         <!-- ./col -->
 
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
@@ -86,18 +151,18 @@
         <!-- ./col -->
 
 
+      </div>
+      <!-- /.row -->
 
 
 
+
+      <div class="row">
         <!-- Graficos de datos -->
         <div class="col-lg-6 col-sm-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Mantenimientos por maquina completados : <?php
-                                                                              date_default_timezone_set('America/Lima');
-                                                                              echo date('F Y');
-
-                                                                              ?></h3>
+              <h3 class="card-title">Mantenimientos por maquina completados</h3>
 
             </div>
             <!-- /.card-header -->
@@ -113,14 +178,7 @@
           <!-- /.card -->
         </div>
         <!-- /.col -->
-
-
-
-
       </div>
-      <!-- /.row -->
-
-
 
 
 
@@ -172,7 +230,6 @@
     $(document).ready(function() {
 
       const graficoTiposMantenimiento = $("#graficoTiposMantenimiento");
-
       new Chart(graficoTiposMantenimiento, {
         type: 'bar',
         data: {
@@ -204,19 +261,18 @@
                 $row = mysqli_fetch_row($rs);
 
                 echo $row[0] . ",";
-
               }
 
               ?>
             ],
             borderWidth: 1,
             backgroundColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(255, 159, 64, 1)',
-              'rgba(255, 205, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(153, 102, 255, 1)'
+              'rgba(255, 99, 132, 0.45)',
+              'rgba(255, 159, 64, 0.45)',
+              'rgba(255, 205, 86, 0.45)',
+              'rgba(75, 192, 192, 0.45)',
+              'rgba(54, 162, 235, 0.45)',
+              'rgba(153, 102, 255, 0.45)'
             ],
 
           }]
@@ -230,7 +286,7 @@
         }
       });
 
-      
+
 
 
 
