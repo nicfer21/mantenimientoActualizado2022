@@ -5,10 +5,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>INDICADORES MES ACTUAL : <?php
-                                          date_default_timezone_set('America/Lima');
-                                          echo date('F - Y');
-                                          ?> </h1>
+            <h1>RESUMEN MES ACTUAL : <?php
+                                      date_default_timezone_set('America/Lima');
+                                      echo date('F - Y');
+                                      ?> </h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -109,7 +109,7 @@
                 ?>
                 <sup style="font-size: 20px">%</sup>
               </h3>
-              <p>Porcentaje de Cumplimiento</p>
+              <p>Porcentaje de Cumplimiento de OT</p>
             </div>
             <div class="icon">
               <i class="ion ion-speedometer"></i>
@@ -120,14 +120,26 @@
 
         <div class="col-lg-2 col-6">
           <!-- small box -->
-          <div class="small-box bg-warning">
+          <div class="small-box bg-danger">
             <div class="inner">
-              <h3>44</h3>
+              <h3>
 
-              <p>User Registrations</p>
+                <?php
+
+                $queryHH = "SELECT sum(tiempo) from reptrabajo where month(inicio) = month(now());";
+                $rs = mysqli_query($con, $queryHH);
+                $row = mysqli_fetch_row($rs);
+                $HorasHombre = ($row[0] / 60) * 100;
+                $HorasHombre = round($HorasHombre) / 100;
+                echo $HorasHombre;
+                ?>
+
+                HH</h3>
+
+              <p>Horas Hombre empleadas</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-clock"></i>
             </div>
 
           </div>
@@ -138,18 +150,39 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>65</h3>
+              <h3> S/.
+                <?php
+                $queryCostoMO = "SELECT sum((reptrabajo.tiempo * m_trabajador.t_tarifa)/60) from reptrabajo
+                inner join ordentrabajo on reptrabajo.idordentrabajo = ordentrabajo.idorden
+                inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento
+                inner join m_trabajador on procedimiento.idtrabajador = m_trabajador.t_dni where month(reptrabajo.inicio) = month(now());";
 
-              <p>Unique Visitors</p>
+                $rs = mysqli_query($con, $queryCostoMO);
+                $row = mysqli_fetch_row($rs);
+
+                $costoMO = $row[0];
+
+                $queryCostoMat = "SELECT sum(costo) from materialuso
+              inner join reptrabajo on materialuso.idreptrabajo = reptrabajo.idreptrabajo where month(reptrabajo.inicio) = month(now());";
+                $rs = mysqli_query($con, $queryCostoMat);
+                $row = mysqli_fetch_row($rs);
+
+                $costoMat = $row[0];
+
+                echo $costoMat + $costoMO;
+
+                ?>
+              </h3>
+
+              <p>Costo de mantenimiento empleado</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion ion-cash"></i>
             </div>
 
           </div>
         </div>
         <!-- ./col -->
-
 
       </div>
       <!-- /.row -->
@@ -158,11 +191,86 @@
 
 
       <div class="row">
+        <!-- Tabla de ordenes en esta semana -->
+        <div class="col-lg-6 col-sm-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Ordenes de trabajo para hoy :
+                <?php
+                echo date('d, F Y');
+                ?>
+              </h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+              <table class="table table-striped table-valign-middle">
+                <thead>
+                  <tr>
+                    <th>Orden de trabajo</th>
+                    <th>Horario de inicio</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $queryOrdenHoy = "SELECT procedimiento.nombre,time(ordentrabajo.inicio), ordentrabajo.estado from ordentrabajo
+                      inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento
+                      where  day(inicio) = day(now()) order by ordentrabajo.inicio;";
+
+                  $rs = mysqli_query($con, $queryOrdenHoy);
+
+                  $rows = array();
+
+                  while ($row = mysqli_fetch_row($rs)) {
+                    $rows[] = $row;
+                  }
+
+                  foreach ($rows as $row) {
+                    $estado = "";
+                    if ($row[2] == 1) {
+                      $estado = "
+                      <div class='icon' style='color: red'>
+                      Falta
+                      <i class='fa fa-info-circle' aria-hidden='true' style='color: red'></i>
+                      </div>";
+                    } else {
+                      $estado = "
+                      <div class='icon' style='color: green'>
+                      Completado 
+                      <i class='fa fa-check-circle' aria-hidden='true' style='color: green'></i>
+                      </div>";
+                    }
+                    echo "<tr>
+                    <td>
+                      $row[0]
+                    </td>
+                    <td>
+                      $row[1]
+                    </td>
+                    <td>
+                      $estado
+                    </td>
+                  </tr>";
+                  }
+
+                  ?>
+
+                </tbody>
+              </table>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
         <!-- Graficos de datos -->
         <div class="col-lg-6 col-sm-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Mantenimientos por maquina completados</h3>
+              <h3 class="card-title">Mantenimientos correctivos por maquina realizados</h3>
 
             </div>
             <!-- /.card-header -->
@@ -179,8 +287,6 @@
         </div>
         <!-- /.col -->
       </div>
-
-
 
       <!-- Tarjeta de power bi -->
       <div class="row">
@@ -254,7 +360,7 @@
                 $queryRecuentoMaquinas = "SELECT count(*)  from reptrabajo 
                 inner join ordentrabajo on reptrabajo.idordentrabajo = ordentrabajo.idorden
                 inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento 
-                where procedimiento.idmaquina = '$maquinas[$i]' and month(reptrabajo.inicio) = month(now());";
+                where procedimiento.idmaquina = '$maquinas[$i]' and month(reptrabajo.inicio) = month(now()) and procedimiento.idestrategia = 1;";
 
                 $rs = mysqli_query($con, $queryRecuentoMaquinas);
 
