@@ -83,7 +83,7 @@
                                     (((procedimiento inner join estrategia on procedimiento.idestrategia = estrategia.idestrategia)
                                     inner join lugar on procedimiento.idlugar = lugar.idlugar)
                                     inner join m_trabajador on m_trabajador.t_dni = procedimiento.idtrabajador)
-                                    inner join maquina on maquina.id_maq = procedimiento.idmaquina;";
+                                    inner join maquina on maquina.id_maq = procedimiento.idmaquina ORDER BY idprocedimiento desc;";
 
                                     $rs = mysqli_query($con, $query);
 
