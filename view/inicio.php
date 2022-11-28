@@ -169,7 +169,10 @@
 
                 $costoMat = $row[0];
 
-                echo $costoMat + $costoMO;
+                $costoTot = ($costoMat + $costoMO) * 100;
+                $costoTot = round($costoTot) / 100;
+
+                echo $costoTot;
 
                 ?>
               </h3>
