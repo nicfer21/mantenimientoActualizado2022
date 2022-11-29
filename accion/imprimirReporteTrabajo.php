@@ -117,7 +117,7 @@ if (isset($_POST['idImprimir'])) {
                 <form action='imprimirOrden.php' id="formOrden" method='post' target='_blank'>
                     <div class="form-group">
                         <label for="idImprimir">ID : </label>
-                        <input type="text" name="idImprimir" readonly class="form-control form-control-border border-width-2" value="<?php echo $id; ?>">
+                        <input type="text" name="idImprimir" readonly class="form-control form-control-border border-width-2" value="<?php echo ($idOrden); ?>">
                     </div>
                 </form>
             </div>
