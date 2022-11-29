@@ -267,7 +267,12 @@
                           <div class="col-lg-12 col-sm-12">
                               <div class="form-group">
                                   <label>Anotar detalladamente las observaciones : </label>
-                                  <textarea name="descripcion" id="descripcion"></textarea>
+                                  <textarea name="descripcion" id="descripcion">
+
+                                  
+<h1>OBSERVACIONES</h1><p><br></p><p><br></p><p>_____________________________________________________________________________________________________________________________________________________</p><h1>INSPECCION DE CALIDAD</h1><table class="table table-bordered"><tbody><tr><td><p>1. ¿LAS HERRAMIENTAS DE TRABAJO SE ENCUENTRAN EN BUEN ESTADO PARA SU USO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO</td><td>b) 30% DE CUMPLIMIENTO</td><td>c) 65% DE CUMPLIMIENTO</td><td>d) 95% DE CUMPLIMIENTO</td></tr></tbody></table><p>2. ¿LAS MAQUINAS ESTAN LIBRES DE OBJETOS INNECESARIOS?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>3. ¿LAS REFACCIONES SE ENCUENTRAN LIMPIAS Y EN BUEN ESTADO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>4. SE USA DE MANERA ADECUADA LAS INDUMENTARIAS DE SEGURIDAD?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>5. ¿EXISTE ORDEN EN EL AREA DE MANTENIMIENTO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>6. ¿EXISTE LIMPIEZA EN EL AREA DE MANTENIMIENTO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>7. SE RESPETAN LAS LEYES Y NORMAS DE TRABAJO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>8. ¿SE ESTA OBEDECIENDO CON EL CALENDARIO DE MANTENIMIENTO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>9. ¿LAS MAQUINAS ESTAN DEBIDAMENTE IDENTIFICADAS Y PUESTAS EN SU LUGAR DE TRABAJO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>10. ¿LOS PLANES DE ORDEN Y LIMPIEZA SE ESTAN REALIZANDO DE MANERA CORRECTA EN EL AREA DE MANTENIMIENTO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>11.¿ LOS TECNICOS Y OPERARIOS ENCARGADOS DEL MANTENIMIENTO EN LA EMPRESA HACEN SU TRABAJO A TIEMPO Y CUMPLEN CON EL PROTOCOLO ESTABLECIDO?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p>12. ¿SE CUMPLEN CON LAS CAPACITACIONES ESTABLECIDAS?</p><table class="table table-bordered"><tbody><tr><td>a) NO HAY CUMPLIMIENTO<br></td><td>b) 30% DE CUMPLIMIENTO<br></td><td>c) 65% DE CUMPLIMIENTO<br></td><td>d) 95% DE CUMPLIMIENTO<br></td></tr></tbody></table><p><br></p></td></tr><tr><td><br></td></tr><tr><td><br></td></tr><tr><td><br></td></tr></tbody></table><p><br></p>
+
+                                  </textarea>
                               </div>
                           </div>
                       </div>
@@ -288,8 +293,8 @@
                   </div>
                   <!-- /.card -->
               </div>
-          
-            </form>
+
+          </form>
 
       </section>
       <!-- /.content -->
