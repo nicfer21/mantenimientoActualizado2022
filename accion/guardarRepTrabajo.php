@@ -9,11 +9,6 @@ if (isset($_POST['dataid'])) {
     $tiempo = $_POST['tiempoTrabajo'];
     $observacion = $_POST['descripcion'];
 
-    echo $id . " ";
-    echo $inicio . " ";
-    echo $final . " ";
-    echo $tiempo . " ";
-    echo $observacion . " ";
 
     // cambiar la orden de trabajo a realizado
 
@@ -30,8 +25,6 @@ if (isset($_POST['dataid'])) {
     VALUES
     ($id,'$inicio','$final',$tiempo,'$observacion');";
 
-    echo $query1 . "<br>";
-
     $rs = mysqli_query($con,$query1);
 
     if ($rs == 1) {
@@ -44,7 +37,6 @@ if (isset($_POST['dataid'])) {
 
         $idRepTrabajo = $row[0];
 
-        echo $idRepTrabajo . "<br>";
 
         if (isset($_POST['idReq'])) {
 
@@ -53,8 +45,6 @@ if (isset($_POST['dataid'])) {
             $cantidadInv[] = $_POST['cantidadReq'];
 
             $index = count($_POST['idReq']);
-
-            echo $index . "<br>";
 
             for ($i = 0; $i < $index; $i++) {
 
@@ -67,21 +57,12 @@ if (isset($_POST['dataid'])) {
                 $costou = $row[2];
                 $costoST = 0;
 
-                echo "<br>" . $cantidad;
-                echo " - " . $tipo;
-
-                echo (" / " . $idInv[0][$i]);
-                echo (" / " . $nombreInv[0][$i]);
-                echo (" / " . $cantidadInv[0][$i]);
-
                 if ($tipo == 1) {
                     $costoST =  $costou * $cantidadInv[0][$i];
                 } else {
                     $costoST = (($costou / 60) * $tiempo * $cantidadInv[0][$i]) * 100;
                     $costoST = round($costoST) / 100;
                 }
-
-                echo " :: " . $costoST . " :: ";
 
                 $query4 = "INSERT INTO materialuso
                 (idreptrabajo,idinventario,cantidad,costo)
@@ -91,10 +72,8 @@ if (isset($_POST['dataid'])) {
                 mysqli_query($con, $query4);
 
                 if ($tipo == 1) {
-                    echo "Reducir inv";
 
                     $diferencia = $cantidad - $cantidadInv[0][$i];
-                    echo "  dif : " . $diferencia;
 
                     $query5 = "UPDATE inventario
                     SET
