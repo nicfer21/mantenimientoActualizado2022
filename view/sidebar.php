@@ -111,10 +111,6 @@
                     </ul>
                 </li>
 
-                <?php
-                if ($_SESSION['tipo'] == 1 || $_SESSION['tipo'] == 2) {
-                    echo '
-                    
                 <li class="nav-item">
 
                     <a href="#" class="nav-link">
@@ -133,29 +129,37 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="categoria" class="nav-link">
-                                <i class="fas  fa-square nav-icon"></i>
-                                <p>Categorias</p>
-                            </a>
-                        </li>
+                        <?php
+                        if ($_SESSION['tipo']  != 3) {
 
-                        <li class="nav-item">
-                            <a href="compras" class="nav-link">
-                                <i class="fas  fa-square nav-icon"></i>
-                                <p>Compras</p>
-                            </a>
-                        </li>
+                            echo '<li class="nav-item">
+                                    <a href="categoria" class="nav-link">
+                                        <i class="fas  fa-square nav-icon"></i>
+                                        <p>Categorias</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="compras" class="nav-link">
+                                        <i class="fas  fa-square nav-icon"></i>
+                                        <p>Compras</p>
+                                    </a>
+                                </li>';
+                        }
+                        ?>
+
 
                     </ul>
-                </li>';
-                }
-
-                ?>
+                </li>
 
 
 
-                <li class="nav-item">
+
+
+                <?php
+
+                if ($_SESSION['tipo']  != 3) {
+                    echo '<li class="nav-item">
 
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-folder-open"></i>
@@ -181,7 +185,12 @@
                         </li>
 
                     </ul>
-                </li>
+                </li>';
+                }
+
+                ?>
+
+
 
                 <li class="nav-item">
 
@@ -201,13 +210,17 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="listaSolicitud" class="nav-link">
-                                <i class="fas fa-file nav-icon"></i>
-                                <p>Lista de solicitudes</p>
-                            </a>
-                        </li>
+                        <?php
 
+                        if ($_SESSION['tipo']  != 3) {
+                            echo '<li class="nav-item">
+                                        <a href="listaSolicitud" class="nav-link">
+                                            <i class="fas fa-file nav-icon"></i>
+                                            <p>Lista de solicitudes</p>
+                                        </a>
+                                    </li>';
+                        }
+                        ?>
                     </ul>
                 </li>
 
@@ -222,12 +235,18 @@
                     </a>
                     <ul class="nav nav-treeview">
 
-                        <li class="nav-item">
-                            <a href="crearOrden" class="nav-link">
-                                <i class="fas  fa-bookmark nav-icon"></i>
-                                <p>Crear orden</p>
-                            </a>
-                        </li>
+                        <?php
+
+                        if ($_SESSION['tipo']  != 3) {
+                            echo '<li class="nav-item">
+                                <a href="crearOrden" class="nav-link">
+                                    <i class="fas  fa-bookmark nav-icon"></i>
+                                    <p>Crear orden</p>
+                                </a>
+                            </li>';
+                        }
+
+                        ?>
 
                         <li class="nav-item">
                             <a href="listaOrden" class="nav-link">
@@ -239,33 +258,38 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
+                <?php
 
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-briefcase"></i>
-                        <p>
-                            Reporte de trabajo
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
+                if ($_SESSION['tipo']  != 3) {
 
-                        <li class="nav-item">
-                            <a href="crearReporteTrabajo" class="nav-link">
-                                <i class="fas  fa-braille  nav-icon"></i>
-                                <p>Crear reporte</p>
+                    echo '<li class="nav-item">
+
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-briefcase"></i>
+                                <p>
+                                    Reporte de trabajo
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
-                        </li>
+                            <ul class="nav nav-treeview">
 
-                        <li class="nav-item">
-                            <a href="listaReporteTrabajo" class="nav-link">
-                                <i class="fas fa-braille  nav-icon"></i>
-                                <p>Lista de reportes</p>
-                            </a>
-                        </li>
+                                <li class="nav-item">
+                                    <a href="crearReporteTrabajo" class="nav-link">
+                                        <i class="fas  fa-braille  nav-icon"></i>
+                                        <p>Crear reporte</p>
+                                    </a>
+                                </li>
 
-                    </ul>
-                </li>
+                                <li class="nav-item">
+                                    <a href="listaReporteTrabajo" class="nav-link">
+                                        <i class="fas fa-braille  nav-icon"></i>
+                                        <p>Lista de reportes</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>';
+                } ?>
 
             </ul>
         </nav>

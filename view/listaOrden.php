@@ -34,10 +34,10 @@
                                       <th>ID Orden</th>
                                       <th>Titulo</th>
                                       <th>Duracion</th>
-                                      <th>Fecha inic</th>
+                                      <th>Fecha</th>
                                       <th>Hora inic</th>
-                                      <th>Fecha fin</th>
                                       <th>Hora fin</th>
+                                      <th>Encargado</th>
                                       <th>Prioridad</th>
                                   </tr>
                               </thead>
@@ -51,12 +51,14 @@
                                     proc.cargalab,
                                     DATE(orden.inicio),
                                     TIME(orden.inicio),
-                                    DATE(orden.final),
                                     TIME(orden.final),
+                                    m_profesion.p_prof,
                                     prioridad.nombre
                                     FROM ordentrabajo as orden 
                                     INNER JOIN procedimiento as proc on orden.idprocedimiento = proc.idprocedimiento 
                                     INNER JOIN prioridad on orden.idprioridad = prioridad.idprioridad
+                                    inner join m_trabajador on proc.idtrabajador = m_trabajador.t_dni
+                                    inner join m_profesion on m_trabajador.t_profesion = m_profesion.p_id
                                     WHERE orden.estado = 1;";
 
                                     $rs = mysqli_query($con, $query);
@@ -89,10 +91,10 @@
                                       <th>ID Orden</th>
                                       <th>Titulo</th>
                                       <th>Duracion</th>
-                                      <th>Fecha inic</th>
+                                      <th>Fecha</th>
                                       <th>Hora inic</th>
-                                      <th>Fecha fin</th>
                                       <th>Hora fin</th>
+                                      <th>Encargado</th>
                                       <th>Prioridad</th>
                                   </tr>
                               </tfoot>
@@ -123,10 +125,10 @@
                                       <th>ID Orden</th>
                                       <th>Titulo</th>
                                       <th>Duracion</th>
-                                      <th>Fecha inic</th>
+                                      <th>Fecha</th>
                                       <th>Hora inic</th>
-                                      <th>Fecha fin</th>
                                       <th>Hora fin</th>
+                                      <th>Encargado</th>
                                       <th>Prioridad</th>
                                   </tr>
                               </thead>
@@ -139,12 +141,14 @@
                                     proc.cargalab,
                                     DATE(orden.inicio),
                                     TIME(orden.inicio),
-                                    DATE(orden.final),
                                     TIME(orden.final),
+                                    m_profesion.p_prof,
                                     prioridad.nombre
                                     FROM ordentrabajo as orden 
                                     INNER JOIN procedimiento as proc on orden.idprocedimiento = proc.idprocedimiento 
                                     INNER JOIN prioridad on orden.idprioridad = prioridad.idprioridad
+                                    inner join m_trabajador on proc.idtrabajador = m_trabajador.t_dni
+                                    inner join m_profesion on m_trabajador.t_profesion = m_profesion.p_id
                                     WHERE orden.estado = 2;";
 
                                     $rs = mysqli_query($con, $query);
@@ -177,10 +181,10 @@
                                       <th>ID Orden</th>
                                       <th>Titulo</th>
                                       <th>Duracion</th>
-                                      <th>Fecha inic</th>
+                                      <th>Fecha</th>
                                       <th>Hora inic</th>
-                                      <th>Fecha fin</th>
                                       <th>Hora fin</th>
+                                      <th>Encargado</th>
                                       <th>Prioridad</th>
                                   </tr>
                               </tfoot>
@@ -241,7 +245,9 @@
 
 
   <!-- modal eliminar-->
-  <div class="modal fade" id="modalEliminar">
+  <div class="modal fade" <?php if ($_SESSION['tipo']  != 3) {
+                                echo 'id="modalEliminar"';
+                            } ?> >
       <div class="modal-dialog modal-lg">
           <div class="modal-content">
               <div class="modal-header">

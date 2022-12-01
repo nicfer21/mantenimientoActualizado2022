@@ -44,7 +44,12 @@
             <div class="icon">
               <i class="ion ion-document"></i>
             </div>
-            <a href="listaSolicitud" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>
+
+            <?php if ($_SESSION['tipo']  != 3) {
+              echo '<a href="listaSolicitud" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>';
+            } ?>
+
+
           </div>
         </div>
 
@@ -69,7 +74,12 @@
             <div class="icon">
               <i class="ion ion-ios-paper"></i>
             </div>
-            <a href="listaOrden" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>
+
+            <?php if ($_SESSION['tipo']  != 3) {
+              echo '<a href="listaOrden" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>';
+            } ?>
+
+
           </div>
         </div>
 
@@ -92,7 +102,11 @@
             <div class="icon">
               <i class="ion ion-briefcase"></i>
             </div>
-            <a href="listaReporteTrabajo" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>
+
+            <?php if ($_SESSION['tipo']  != 3) {
+              echo ' <a href="listaReporteTrabajo" class="small-box-footer">Más Informacion <i class="fas fa-arrow-circle-right"></i></a>';
+            } ?>
+
           </div>
         </div>
         <!-- ./col -->
@@ -290,44 +304,6 @@
         </div>
         <!-- /.col -->
       </div>
-
-      <!-- Tarjeta de power bi -->
-      <div class="row">
-        <div class="col-lg-12">
-
-
-          <!-- Default box -->
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Reporte en PowerBI </h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
-
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-12 col-sm-12">
-
-                </div>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
-
-              </div>
-              <!-- /.card-footer-->
-            </div>
-            <!-- /.card -->
-          </div>
-
-
-        </div>
-      </div>
-
-
 
 
     </section>

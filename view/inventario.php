@@ -98,8 +98,12 @@
     </section>
     <!-- /.content -->
 
+
+    
+
+
     <!-- Modal Crear -->
-    <div class="modal fade" id="modalCrear">
+    <div class="modal fade" <?php if ($_SESSION['tipo']  != 3){ echo 'id="modalCrear"'; } ?> >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -283,7 +287,7 @@
     <!-- /.modal -->
 
     <!-- Modal Actualizar -->
-    <div class="modal fade" id="modalActualizar">
+    <div class="modal fade" <?php if ($_SESSION['tipo']  != 3){ echo 'id="modalActualizar"'; } ?> >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -473,7 +477,7 @@
     <!-- /.modal -->
 
     <!-- Modal Eliminar -->
-    <div class="modal fade" id="modalEliminar">
+    <div class="modal fade" <?php if ($_SESSION['tipo']  != 3){ echo 'id="modalEliminar"'; } ?> >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -515,6 +519,9 @@
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+
+
 
   </div>
   <!-- /.content-wrapper -->
