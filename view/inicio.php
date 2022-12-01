@@ -303,8 +303,27 @@
           <!-- /.card -->
         </div>
         <!-- /.col -->
-      </div>
 
+        <!-- Power BI -->
+        <div class="col-lg-12 col-sm-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Reporte en Power BI</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+            <iframe title="Resumen Mantenimiento" width="924" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiMDk2ZjQxZGItNTAwZC00NjZlLThhMTYtNWE2YTg0ZDNjZWMxIiwidCI6IjBjZDEzZTIzLTAyY2QtNDMxNi04YWZhLTY3MmE4OTM3NDQ3ZiJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+
+      </div>
 
     </section>
     <!-- /.content -->
