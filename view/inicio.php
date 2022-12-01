@@ -233,8 +233,8 @@
                 <tbody>
                   <?php
                   $queryOrdenHoy = "SELECT procedimiento.nombre,time(ordentrabajo.inicio), ordentrabajo.estado from ordentrabajo
-                      inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento
-                      where  day(inicio) = day(now()) order by ordentrabajo.inicio;";
+                  inner join procedimiento on ordentrabajo.idprocedimiento = procedimiento.idprocedimiento
+                  where date(ordentrabajo.inicio) = date(now()) order by ordentrabajo.inicio;";
 
                   $rs = mysqli_query($con, $queryOrdenHoy);
 
